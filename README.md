@@ -9,8 +9,5 @@ Team :
 
 Project description:
 
- ....
- some text
- ....
 
 
