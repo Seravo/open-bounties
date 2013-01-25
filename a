@@ -1,0 +1,72 @@
+commit 58f75d290c2bd12af9e953067d62b8b15158c2f2
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Fri Jan 25 13:27:44 2013 +0200
+
+    Test
+
+commit 9250490ec848183b5533bb2be5e3e4fa14bf433d
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Fri Jan 25 13:14:41 2013 +0200
+
+    Delete first commit
+
+commit 4ff18f631cd4383731bc491e0a5069623767b407
+Author: Live session user <mint@mint.(none)>
+Date:   Fri Jan 25 10:53:27 2013 +0000
+
+    First commit, add new features
+
+commit 9b6ee6d8eac8f9c798b307b11375ed3890d35d48
+Merge: 31db467 fdc7277
+Author: Danchenkov Egor <icepnyx@gmail.com>
+Date:   Tue Jan 22 23:16:45 2013 +0200
+
+    Merge branch 'master' of https://github.com/edanchenkov/freezing-ninja
+
+commit 31db46794fe001498e7add4fb938aeb5886fed82
+Author: Danchenkov Egor <icepnyx@gmail.com>
+Date:   Tue Jan 22 23:16:11 2013 +0200
+
+    Improvements
+
+commit fdc7277d6ff29766d3a5bdffaf9cd9fefde055f0
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 22:04:21 2013 +0200
+
+    Update README.md
+
+commit ae8a0ea719e311da92970bb6fde90366c970d1fc
+Author: Danchenkov Egor <icepnyx@gmail.com>
+Date:   Tue Jan 22 22:01:12 2013 +0200
+
+    Add server.js and index.js
+
+commit 29979b7cd7ee295c7c6599a6132fb122c1cc8208
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 19:43:31 2013 +0200
+
+    Update README.md
+
+commit 2882c08edfb00e74a5c30210e9b4931b7084beae
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 19:43:08 2013 +0200
+
+    Update README.md
+
+commit acf66fdb862eabce3413345b5ec61c291e91d160
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 19:42:03 2013 +0200
+
+    Update README.md
+
+commit a9ed61510c3788abcb1b0d2907739285c9627893
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 19:39:58 2013 +0200
+
+    Update README.md
+
+commit f863f2b865cd599e70a61ce744f0437a6f3d3ee5
+Author: edanchenkov <icepnyx@gmail.com>
+Date:   Tue Jan 22 09:20:02 2013 -0800
+
+    Initial commit
