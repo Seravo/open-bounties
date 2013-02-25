@@ -1,0 +1,50 @@
+<html>
+	
+	 <head>
+    <link rel="stylesheet"  type="text/css" href='/site.css'>
+    <meta charset=utf-8>
+    <title>Bounty example</title>
+
+
+</head>
+
+<body > 
+
+<form method='GET' action='/add'><% bugs.forEach(function(bug) { %>
+		<input type='hidden' name='id' value='<%= bug._id %>' />			
+			
+		<% }); %>	<input type='submit' value='Add' /></form>
+
+<table border="3""><% bugs.forEach(function(bug) 
+{ %>
+
+	<tr><td>
+			<p> Date: <%= new Date(bug.ts).toString() %></p>
+			<p> <b> Bug Name: </b><a href="/commentForm" ><%= bug.bugName %></a>: by <b> <%=bug.author %></b></p>
+			<p> <b> Description: </b><%= bug.description %></p> 	<p> <b>Status: </b><%= bug.status %></p>
+			<p>Link: <a href="<%= bug.link %>" target="_blank"><%= bug.link %></a></p>
+				<form method='GET' action='/addCom'>
+					<input type='submit' value='Add Comment' />
+					<input type='hidden' name='id' value='<%= bug._id %>' />
+				</form>
+		</td>
+		<td>
+			<form method='GET' action='/del'>
+				<input type='submit' value='Delete'/>
+				<input type='hidden' name='id' value='<%= bug._id %>' />
+			</form>
+			<br/>
+			<form method='GET' action='/edit'>
+				<input type='submit' value='Edit' />
+				<input type='hidden' name='id' value='<%= bug._id %>' />
+			</form>
+			<br/>
+			
+			
+		</td>
+	</tr>
+<% }); %></table>
+
+
+</body>
+</html>

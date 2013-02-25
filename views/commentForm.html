@@ -1,0 +1,18 @@
+<form  method='POST' action='/addCom'>
+	<% if(bug) 
+	{ %>
+	<input type='hidden' name='id' value='<%= bug._id %>' />
+	<% } %>
+		<p> <b> Bug name: </b><%=bug.bugName%></p>
+		<p> <b>Author: </b><%= bug.author %></p>
+		<br/>
+		<p>Write your comment</p>
+		<textarea rows=5 cols=40 name='description'>
+		<%bug.description %>
+		</textarea>
+		<br/>
+		
+                
+		<input type='submit' value='Submit' />
+</form>
+
