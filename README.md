@@ -1,8 +1,16 @@
-freezing-ninja
-==============
+****************************
+      **************
+      Bounty project
+      **************
+    
+    1.Description
+    
+    
+    2.Functionaity
+    
+    
+    3.Contributers: Borisenkova Svetlana
+                    Danchenkov Egor
+                    Shakurova Olga     
+****************************
 
-Bounty project
-
-1. Egor's branch
-
-Summer of code
