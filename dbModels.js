@@ -1,23 +1,38 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
+
 /*create 2 schemas*/
 var BugSchema = new Schema(
 {
 	ts : { type: Date, default: Date.now },
 	bugName: String,	
-	author : String,
+	author : { type: String, default: 'EgorDefault' },
 	description : String,
-	status: String,
-	link: String
+	comments: [{
+    body: { type : String, default : '' },
+    user: { type : Schema.ObjectId, ref : 'User' },
+    username: {type: String},
+    createdAt: { type : Date, default : Date.now }
+  }],
+	status: {type : String, default : 'Open'},
+	link: String,
 }); 
 
-var CommentSchema = new Schema(
-{
-	ts : { type: Date, default: Date.now },
-	bugTitle: [{ type: Schema.Types.ObjectId, ref: 'Postdb' }],
-	message: String
 
+var UserSchema = new Schema(
+{
+	name : String,
+	email : String,
+	username : String,
+	//provider : String,
+	hashed_password : String,
+	// salt : String,
+	// facebook : {},
+	// twitter : {},
+	// github : {},
+	// google : {}
 });
 
 // var SimpleSchema = new Schema(
@@ -26,19 +41,19 @@ var CommentSchema = new Schema(
 // });
 
 /*Add extra method to BugSchema Models*/
-BugSchema.methods.savetest = function () {
+BugSchema.methods.saveone = function () {
 	this.save()
 	console.log('Document Is Successfully Added')
 }
 
 /*Compiling models*/
 var Bug = mongoose.model('Bug',BugSchema);
-var Comment = mongoose.model('Comment',CommentSchema);
+var User = mongoose.model('User',UserSchema);
 //var Simple = mongoose.model('Simple',SimpleSchema);
 
 
 /*Exports model's instances*/
 exports.Bug = Bug;
-exports.Comment = Comment;
+exports.User = User;
 //exports.Simple = Simple;
 

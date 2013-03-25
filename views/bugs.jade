@@ -1,0 +1,42 @@
+extends layout
+block content
+  body   
+   h2.form-signin-heading Bugs table
+   table.table.table-bordered
+    thead 
+     tr
+      th Bug name
+      th Description
+      th Author
+      th Status
+      th Link
+      th(style= "display:none") id
+    tbody
+    each bug in req.bugs   
+     tr
+      td= bug.bugName
+      td= bug.description
+      td= bug.author
+      td= bug.status
+      td= bug.link
+      td#rowId(style= "display:none")= bug.id
+   a.button.btn.btn-success(type='button', style='margin-bottom:5px;',href='/addBug' ) Add new
+   form(action='/deleteBug', method='post')
+    input.idInput(type='hidden', name='myId')
+    button.btn.btn-danger#deleteButton(type='submit', disabled) Delete
+
+ 
+   //-some scripts
+  script(src='javascripts/checkbox.js')  
+  //- script
+  //-  $("tr").click(function(){
+  //-    $(this).toggleClass('success');
+
+  //-    var href = $(this).addAttr("href");
+  //-       if(href) {
+  //-           window.location = href;
+  //-       }
+  //-  })
+
+
+

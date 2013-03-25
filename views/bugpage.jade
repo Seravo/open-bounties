@@ -1,0 +1,35 @@
+extends layout
+block content
+  body   
+  .page-header
+    h2.form-signin-heading Bug page
+        small 
+         =req.bug.bugName	
+   p 
+    b Full description: 
+    =req.bug.description
+   p 
+    b Posted by:  
+    =req.bug.author
+   p 
+    b Status:  
+    =req.bug.status
+   p 
+    b Link:  
+    =req.bug.link
+   hr 
+  each comment in req.bug.comments
+   div.well.well-small
+    b Posted by 
+    a(href='/user/' + comment.user)
+     =comment.username
+    p
+     b When: 
+     =comment.createdAt
+
+    p= comment.body
+
+  form(method="post", action="/bugpage/#{req.bug._id}/comments")
+   textarea(type='text', rows="3", name='body', placeholder='Add your comment')
+   br
+   button.btn.btn-success(type='submit') Post 	

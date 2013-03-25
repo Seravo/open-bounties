@@ -1,9 +1,8 @@
 var models = require('../dbModels')
-
-exports.index = function( req, res ) { 
-  models.Bug.find({}, function( err, bugs ){
-   // models.Comment.find({}, function( err, albums ){
-      res.render('index.html', { listofbugs: bugs });
-    });
-
+exports.index = function( req, res ){ 
+	//Можно это проверять тут и передавать как boll авторизацию
+	 models.Bug.find({}, function( err, bugs ){   
+      req.bugs = bugs;
+      res.render('index', {req: req});
+    }); 
 }
