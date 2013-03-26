@@ -100,6 +100,7 @@ app.post('/deleteBug', bug.remove);
 app.get('/bug/:bugid', bug.index)
 app.param('bugid', bug.find);
 
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
@@ -108,6 +109,9 @@ http.createServer(app).listen(app.get('port'), function(){
 var comment = require('./routes/comment')
 app.post('/bugpage/:bugid/comments',ensureAuthenticated ,comment.add);
 
+//Additions
+var addition = require('./routes/additions')
+app.post('/bugpage/:bugid/additions',ensureAuthenticated ,addition.add);
 
 
 function ensureAuthenticated(req, res, next) {

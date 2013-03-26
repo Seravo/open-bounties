@@ -8,3 +8,39 @@ a {
 }
 
 p {margin-left:20px;}
+
+form {
+    margin: 0;
+}
+label.error {
+    color: red;
+}
+
+.opaqueLayer
+{
+display:none;
+position:absolute;
+top:0px;
+left:0px;
+opacity:0.9;
+filter:alpha(opacity=60);
+background-color: #000000;
+z-Index:1000;
+}
+ 
+.questionLayer
+{
+position:relative;
+top:0px;
+left:0px;
+width:350px;
+height:400px;
+display:none;
+z-Index:1001;
+border:2px solid white;
+background-color:#FFFFFF;
+opacity: 1;
+text-align:center;
+vertical-align:middle;
+padding:10px;
+}

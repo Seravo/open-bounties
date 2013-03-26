@@ -1,6 +1,6 @@
 var models = require('../dbModels');
 var mongoose = require('mongoose');
-var $ = require('jquery');
+
 
 exports.index = function(req, res){
   res.render('bugpage', {req:req})

@@ -16,8 +16,15 @@ var BugSchema = new Schema(
     username: {type: String},
     createdAt: { type : Date, default : Date.now }
   }],
+  additions: [{
+    sum: { type : String, default : '' },
+    user: { type : Schema.ObjectId, ref : 'User' },
+    username: {type: String},
+    createdAt: { type : Date, default : Date.now }
+  }],
 	status: {type : String, default : 'Open'},
 	link: String,
+   totalSum: {type : Number, default : 5}
 }); 
 
 

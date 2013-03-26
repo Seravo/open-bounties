@@ -2,12 +2,16 @@ extends layout
 block content
   body   
   .page-header
-    h2.form-signin-heading Bug page
+    h2.form-signin-heading Bug page     
         small 
-         =req.bug.bugName	
-   p 
+         =req.bug.bugName
+    p 
     b Full description: 
     =req.bug.description
+    a(href="#", onclick="showLayer();" )
+     img.offset7(src="../pictures/coins.png", width="25")
+    b=req.bug.totalSum
+    b  $        
    p 
     b Posted by:  
     =req.bug.author
@@ -32,4 +36,25 @@ block content
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br
-   button.btn.btn-success(type='submit') Post 	
+   button.btn.btn-success(type='submit') Post
+  form(method="post", action="/bugpage/#{req.bug._id}/additions")
+   #shadow.opaqueLayer
+     #question.questionLayer
+      input.btn.btn-close.offset3(type='button', onclick='hideLayer();', value='X')
+      h3 Donate Form
+        .modal-body
+         .control-group
+          label.control-label Donation Amount
+           .controls
+            .input-prepend
+             .span.add-on  €
+             input.input-mini(type='number', name='sum', value="5")
+          .control-group
+           .controls
+            label.checkbox
+             input#tos-agreed(type='checkbox', required='required')
+             I Agree to the
+             a(href='#tos-modal', data-toggle='modal') Terms of Service
+         .control-group
+          .controls
+           button.btn.btn-primary.btn-small Support Bounty
