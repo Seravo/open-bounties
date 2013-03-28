@@ -1,0 +1,24 @@
+extends layout
+block content
+  body   
+   h2.form-signin-heading Profile
+   p Your name is  
+      =req.user.name
+   p Email is 
+    =req.user.email
+
+
+   //-some scripts
+  //- script(src='javascripts/checkbox.js')  
+  //- script
+  //-  $("tr").click(function(){
+  //-    $(this).toggleClass('success');
+
+  //-    var href = $(this).addAttr("href");
+  //-       if(href) {
+  //-           window.location = href;
+  //-       }
+  //-  })
+
+
+

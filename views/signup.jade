@@ -1,0 +1,13 @@
+extends layout
+block content
+ body
+  form(action='/signup', method='post')
+    h2.form-signin-heading Register form:
+    input.input-block-level(type='text', name='name', placeholder='Name')
+    input.input-block-level(type='text', name='email', placeholder='E-mail')
+    input.input-block-level(type='text', name='username', placeholder='Username')
+    input.input-block-level(type='password', name='hashed_password', placeholder='Password')
+    label.checkbox
+      input(type='checkbox', value='remember-me')
+      | I agree with the rules
+    button.btn.btn-large.btn-primary(type='submit') Submit

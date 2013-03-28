@@ -1,0 +1,14 @@
+extends layout
+block content
+  body      
+   form(action='/addBug', method='post')
+    h2.form-signin-heading Bug creation form
+    input.input-block-level(type='text', name='bugName', placeholder='Title')
+    input.input-block-level(type='text', name='link', placeholder='Link')
+    //-input.input-block-level(type='text', name='author', value=req.user._id)
+    textarea(rows='3', type='text', name='description', placeholder='Description')
+    br  
+    button.btn.btn-large.btn-primary(type='submit') Submit
+
+
+
