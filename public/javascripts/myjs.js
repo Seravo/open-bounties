@@ -1,20 +1,20 @@
 function getBrowserHeight() {
-var intH = 0;
-var intW = 0;
- 
-if(typeof window.innerWidth == 'number' ) {
-intH = window.innerHeight;
-intW = window.innerWidth;
-}
-else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-intH = document.documentElement.clientHeight;
-intW = document.documentElement.clientWidth;
-}
-else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
-intH = document.body.clientHeight;
-intW = document.body.clientWidth;
-}
-return { width: parseInt(intW), height: parseInt(intH) };
+  var intH = 0;
+  var intW = 0;
+   
+  if(typeof window.innerWidth == 'number' ) {
+  intH = window.innerHeight;
+  intW = window.innerWidth;
+  }
+  else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+  intH = document.documentElement.clientHeight;
+  intW = document.documentElement.clientWidth;
+  }
+  else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
+  intH = document.body.clientHeight;
+  intW = document.body.clientWidth;
+  }
+  return { width: parseInt(intW), height: parseInt(intH) };
 }
  
 function setLayerPosition() {
@@ -24,8 +24,8 @@ var question = document.getElementById('question');
 var bws = getBrowserHeight();
 shadow.style.width = bws.width + 'px';
 shadow.style.height = bws.height + 'px';
-question.style.left = parseInt((bws.width - 350) / 2)+ 'px';
-question.style.top = parseInt((bws.height - 200) / 2)+ 'px';
+question.style.left = parseInt(bws.width - 400) / 2 + 'px';
+question.style.top = parseInt(bws.height - 500) / 2 + 'px';
 shadow = null;
 question = null;
 }
