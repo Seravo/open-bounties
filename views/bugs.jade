@@ -12,7 +12,6 @@ block content
       th Link
       th(style= "display:none") id
     tbody
-<<<<<<< HEAD
     each bug in req.bugs   
      tr
       td= bug.bugName
@@ -20,7 +19,6 @@ block content
       td= bug.author
       td= bug.status
       td= bug.link
-=======
     each bug in req.bugs 
      tr
       td= bug.bugName
@@ -30,7 +28,6 @@ block content
       td= bug.status
       td
         a(href=bug.link)=bug.link
->>>>>>> ff2fb420b64ca72d8e2add84d207329a6a7d9db9
       td#rowId(style= "display:none")= bug.id
    a.button.btn.btn-success(type='button', style='margin-bottom:5px;',href='/addBug' ) Add new
    form(action='/deleteBug', method='post')

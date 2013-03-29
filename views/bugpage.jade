@@ -2,7 +2,6 @@ extends layout
 block content
   body   
   .page-header
-<<<<<<< HEAD
     h2.form-signin-heading Bug page     
         small 
          =req.bug.bugName
@@ -16,7 +15,6 @@ block content
    p 
     b Posted by:  
     =req.bug.author
-=======
     h2.form-signin-heading Bug page
         small 
          =req.bug.bugName	
@@ -27,7 +25,6 @@ block content
     b Posted by: 
     a(href='/user/' + req.bug.author.id)
      =req.bug.author.username
->>>>>>> ff2fb420b64ca72d8e2add84d207329a6a7d9db9
    p 
     b Status:  
     =req.bug.status
@@ -49,7 +46,6 @@ block content
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br
-<<<<<<< HEAD
    button.btn.btn-success(type='submit') Post
   form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
    #shadow.opaqueLayer
@@ -71,6 +67,4 @@ block content
       .control-group
        .controls
         button.btn.btn-primary.btn-small Donate
-=======
-   button.btn.btn-success(type='submit') Post 	
->>>>>>> ff2fb420b64ca72d8e2add84d207329a6a7d9db9
+   button.btn.btn-success(type='submit') Post 

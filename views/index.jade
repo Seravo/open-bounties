@@ -8,7 +8,6 @@ block content
     p.lead
      | Bounty project helps people .
     a.btn.btn-large.btn-success(href='/signup') Sign up today
-<<<<<<< HEAD
     br
     a(href="/auth/facebook")
      img(src="pictures/facebook.png")
@@ -16,8 +15,6 @@ block content
      img(src="pictures/grey_google_stamp.png")
     a(href="#")
      img(src="pictures/grey_twitter_stamp.png")
-=======
->>>>>>> ff2fb420b64ca72d8e2add84d207329a6a7d9db9
   hr 
   each bug in req.bugs
    div(class="well well-small;", style= "height:100px;")  
@@ -32,11 +29,8 @@ block content
     div(style="float: right")  
       p
         b Posted by:  
-<<<<<<< HEAD
         =bug.author  
-=======
           a(href="/user/"+bug.author._id)=bug.author.username 
->>>>>>> ff2fb420b64ca72d8e2add84d207329a6a7d9db9
         //random placeholde will be raplaced with avatar
       img.img-rounded(style='width:75px; float: right', src='/pictures/placeholder.jpg')  
   hr
