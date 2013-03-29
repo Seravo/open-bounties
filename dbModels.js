@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
+  , authTypes = ['facebook']
 
 
 
@@ -33,13 +34,14 @@ var UserSchema = new Schema(
 	name : String,
 	email : String,
 	username : String,
-	//provider : String,
+	provider : String,
 	hashed_password : String,
 	// salt : String,
-	// facebook : {},
-	// twitter : {},
+	facebook : {},
+	google : {},
+        twitter : {}
 	// github : {},
-	// google : {}
+	
 });
 
 // var SimpleSchema = new Schema(

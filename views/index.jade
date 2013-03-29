@@ -8,6 +8,13 @@ block content
     p.lead
      | Bounty project helps people .
     a.btn.btn-large.btn-success(href='/signup') Sign up today
+    br
+    a(href="/auth/facebook")
+     img(src="pictures/facebook.png")
+    a(href="/auth/google")
+     img(src="pictures/grey_google_stamp.png")
+    a(href="#")
+     img(src="pictures/grey_twitter_stamp.png")
   hr 
   each bug in req.bugs
    div(class="well well-small;", style= "height:100px;")  

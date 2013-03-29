@@ -5,11 +5,17 @@ var express = require('express')
   , db = require('./dbConnection')
   , passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
+  , FacebookStrategy = require('passport-facebook').Strategy
+  , GoogleStrategy = require('passport-google').Strategy
+  , TwitterStrategy = require('passport-twitter').Strategy
   , models = require('./dbModels')
   , passwordHash = require('password-hash');
+var FACEBOOK_APP_ID = "..."
+var FACEBOOK_APP_SECRET = "..."
+var TWITTER_CONSUMER_KEY="..."
+var TWITTER_CONSUMER_SECRET="...";
 
-//require('./testdata')
-//Super Comment
+
 var app = express();
 
 
@@ -66,6 +72,43 @@ passport.use(new LocalStrategy(
     });
   }
 ));
+
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ _id: profile.id }, function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://localhost:3000/auth/google/return',
+    realm: 'http://www.example.com/'
+  },
+  function(identifier, profile, done) {
+    User.findOrCreate({ _id: identifier }, function(err, user) {
+      done(err, user);
+    });
+  }
+));
+
+passport.use(new TwitterStrategy({
+    consumerKey: TWITTER_CONSUMER_KEY,
+    consumerSecret: TWITTER_CONSUMER_SECRET,
+    callbackURL: "http://localhost:3000/auth/twitter/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ _id: profile.id }, function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
 /////////////////////////////////////
 //Main page
 
@@ -89,6 +132,22 @@ app.get('/signup', user.signup);
 app.get('/users', user.list);
 app.get('/user/:userid', user.show);
 app.param('userid', user.user);
+app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+app.get('/auth/google', passport.authenticate('google'));
+app.get('/auth/google/return', 
+  passport.authenticate('google', { successRedirect: '/',
+                                    failureRedirect: '/login' }));
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { successRedirect: '/',
+                                     failureRedirect: '/login' }));
+
 
 //Bugs
 var bug = require('./routes/bug');
