@@ -31,7 +31,17 @@ block content
         b Posted by:   
           a(href="/user/"+bug.author._id)=bug.author.username 
         //random placeholde will be raplaced with avatar
-      img.img-rounded(style='width:75px; float: right', src='/pictures/placeholder.jpg')  
+      img.img-rounded(style='width:75px; float: right', src='/pictures/placeholder.jpg')
+  .pagination.pagination-small
+    ul
+      - if (page > 0) {
+      li
+        a(href="?page=" + (page - 1)) Previous
+      - }
+      - if (!lastPage) {
+      li
+        a(href="?page=" + (page + 1)) Next
+      - }  
   hr
   .footer
     p © The Wanderers 2013
