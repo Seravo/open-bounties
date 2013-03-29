@@ -56,8 +56,9 @@ question = null;
  
 window.onresize = setLayerPosition;
 
+$(document).ready(function(){
 
-$('#payment-form').validate({
+  $('#payment-form').validate({
   rules: {
       sum: {
       required: true,
@@ -81,4 +82,5 @@ $('#payment-form').validate({
     $(el).closest('.control-group').removeClass('error');
   },
 
-});
+ });
+})
