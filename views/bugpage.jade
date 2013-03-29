@@ -14,17 +14,8 @@ block content
     b €         
    p 
     b Posted by:  
-    =req.bug.author
-    h2.form-signin-heading Bug page
-        small 
-         =req.bug.bugName	
-   p 
-    b Full description: 
-    =req.bug.description
-   p 
-    b Posted by: 
-    a(href='/user/' + req.bug.author.id)
-     =req.bug.author.username
+      a(href='/user/' + req.bug.author.id)
+       =req.bug.author.username
    p 
     b Status:  
     =req.bug.status
@@ -67,4 +58,3 @@ block content
       .control-group
        .controls
         button.btn.btn-primary.btn-small Donate
-   button.btn.btn-success(type='submit') Post 

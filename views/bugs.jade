@@ -12,13 +12,6 @@ block content
       th Link
       th(style= "display:none") id
     tbody
-    each bug in req.bugs   
-     tr
-      td= bug.bugName
-      td= bug.description
-      td= bug.author
-      td= bug.status
-      td= bug.link
     each bug in req.bugs 
      tr
       td= bug.bugName

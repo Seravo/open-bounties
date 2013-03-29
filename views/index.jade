@@ -28,8 +28,7 @@ block content
      a.btn.btn-info(style="margin-top: 20px", href="/bug/" + bug._id) See bug      
     div(style="float: right")  
       p
-        b Posted by:  
-        =bug.author  
+        b Posted by:   
           a(href="/user/"+bug.author._id)=bug.author.username 
         //random placeholde will be raplaced with avatar
       img.img-rounded(style='width:75px; float: right', src='/pictures/placeholder.jpg')  
