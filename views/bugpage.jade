@@ -38,7 +38,7 @@ block content
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br
    button.btn.btn-success(type='submit') Post
-  form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
+  form#payment-form(method="post", action="/bugpage/#{req.bug._id}/additions")
    #shadow.opaqueLayer
      #question.questionLayer
       input.btn.btn-close.offset3(type='button', onclick='hideLayer();', value='X')

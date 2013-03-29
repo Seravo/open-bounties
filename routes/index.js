@@ -1,9 +1,9 @@
 var models = require('../dbModels')
 
 exports.index = function( req, res, next){ 
-	//Можно это проверять тут и передавать как boll авторизацию
+	//Можно это проверять тут и передавать как bool авторизацию
 	 var pageList = 3;
-     var page = req.query.page && parseInt(req.query.page, 10) || 0;
+     var page = req.query.page && parseInt(req.query.page, 3) || 0;
     models.Bug.count(function (err, count){
     	if(err){
     		return next(err);
