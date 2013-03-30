@@ -32,15 +32,19 @@ block content
           a(href="/user/"+bug.author._id)=bug.author.username 
         //random placeholder will be raplaced with avatar
       img.img-rounded(style='width:75px; float: right', src='/pictures/placeholder.jpg')
-  .pagination.pagination-small
+  .pagination.pagination-right
     ul
       - if (page > 0) {
       li
+        a(href="?page=0") First
+      li
         a(href="?page=" + (page - 1)) Previous
       - }
-      - if (!lastPage) {
+      - if (page<lastPage) {
       li
         a(href="?page=" + (page + 1)) Next
+      li
+        a(href="?page=" + lastPage) Last  
       - }  
   hr
   .footer

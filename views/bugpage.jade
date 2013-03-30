@@ -21,7 +21,7 @@ block content
     =req.bug.status
    p 
     b Link:  
-    =req.bug.link
+      a(href=req.bug.link)=req.bug.link
    hr 
   each comment in req.bug.comments
    div.well.well-small
