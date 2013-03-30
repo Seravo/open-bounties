@@ -1,7 +1,8 @@
 var models = require('../dbModels');
 var mongoose = require('mongoose');
-var request = require('request')
-var cheerio = require('cheerio')
+var request = require('request');
+var cheerio = require('cheerio');
+var emailer = require ('../routes/emailer');
 // var async = require('async');
 
 exports.index = function(req, res) {
@@ -58,6 +59,13 @@ exports.create = function(req, res) {
           res.render('/addBug');
         } else {
           res.redirect('bugs');
+          //send email to the project lead, will be replaced later
+          // mrprojectlead@gmail.com pass:Leadersh1p, sends to itsself
+          emailer.sendMail('http://localhost:3000/bug/' + bug._id, function(err) {
+        if (err) {
+          console.log(err)
+        }
+      })
         }
       })
     } else {

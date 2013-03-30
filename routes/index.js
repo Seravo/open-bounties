@@ -9,9 +9,6 @@ exports.index = function( req, res, next){
     		return next(err);
     	}
          var lastPage = Math.ceil(count/pageList)-1
-         console.log(page)
-         console.log(lastPage)
-         console.log(count)
          models.Bug.find({})
 	 	    .populate('author', 'username')
 	 	    .skip(pageList * page)
