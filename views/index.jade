@@ -38,11 +38,11 @@ block content
       li
         a(href="?page=0") First
       li
-        a(href="?page=" + (page - 1)) Previous
+        a(href="?page=" + (page - 1)) <<
       - }
-      - if (page<lastPage) {
+      - if (page<lastPage) {     
       li
-        a(href="?page=" + (page + 1)) Next
+        a(href="?page=" + (page + 1)) >>
       li
         a(href="?page=" + lastPage) Last  
       - }  

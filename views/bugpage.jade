@@ -21,18 +21,20 @@ block content
     =req.bug.status
    p 
     b Link:  
-      a(href=req.bug.link)=req.bug.link
-   hr 
+    =req.bug.link
+    hr
+  p Comments: 
+   b= req.bug.comments.length    
   each comment in req.bug.comments
-   div.well.well-small
-    b Posted by 
-    a(href='/user/' + comment.user)
-     =comment.username
-    p
-     b When: 
-     =comment.createdAt
-
+   div.commentbox  
     p= comment.body
+   div.commentfooter.shadow
+    p
+    b When: 
+    =comment.createdAt.toDateString()
+    b Posted by 
+      a(href='/user/' + comment.user)
+      =comment.username
 
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
