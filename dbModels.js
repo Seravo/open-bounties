@@ -9,7 +9,7 @@ var BugSchema = new Schema(
 	ts : { type: Date, default: Date.now },
 	bugName: String,	
 
-	author : { type: String, default: 'EgorDefault' },
+	// author : { type: String, default: 'EgorDefault' },
 
 	author : { type : Schema.ObjectId, ref : 'User' },
 	description : String,
@@ -27,9 +27,11 @@ var BugSchema = new Schema(
   }],
 	status: {type : String, default : 'Open'},
 	link: String,
-   totalSum: {type : Number, default : 5},
+    totalSum: {type : Number, default : 5},
 	status: {type : String},
 	link: String,
+	claimer : { type : Schema.ObjectId, ref : 'User' },
+	deadline : { type : Date, default: Date.now}
 }); 
 
 
