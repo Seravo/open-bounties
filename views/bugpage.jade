@@ -5,13 +5,14 @@ block content
     h2.form-signin-heading Bug page     
         small 
          =req.bug.bugName
-    p 
+         button.btn.btn-mini.btn-primary(style='float:right;') Claim bounty! 
     b Full description: 
-    =req.bug.description
-    a.btn.offset5(href="#", onclick="showLayer();" )
+    =req.bug.description   
+    div(style="float: right;") 
+     b=req.bug.totalSum
      b € 
-    b=req.bug.totalSum
-    b €         
+     a(href="#", onclick="showLayer();" )
+      button.btn.btn-mini.btn-success Add money   
    p 
     b Posted by:  
       a(href='/user/' + req.bug.author.id)
@@ -21,8 +22,14 @@ block content
     =req.bug.bountyStatus
    p 
     b Link:  
+<<<<<<< HEAD
      a(href=req.bug.link)=req.bug.link
     hr
+=======
+    a(href= req.bug.link)
+     =req.bug.link
+    hr 
+>>>>>>> 8782131b41d60b502d2446bf9d8d8f200b809783
   p Comments: 
    b= req.bug.comments.length    
   each comment in req.bug.comments
@@ -32,10 +39,9 @@ block content
     p
     b When: 
     =comment.createdAt.toDateString()
-    b Posted by 
+    b  Posted by 
       a(href='/user/' + comment.user)
-      =comment.username
-
+       =comment.username       
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br
