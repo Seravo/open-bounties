@@ -22,14 +22,9 @@ block content
     =req.bug.bountyStatus
    p 
     b Link:  
-<<<<<<< HEAD
-     a(href=req.bug.link)=req.bug.link
-    hr
-=======
-    a(href= req.bug.link)
-     =req.bug.link
-    hr 
->>>>>>> 8782131b41d60b502d2446bf9d8d8f200b809783
+      a(href= req.bug.link)
+       =req.bug.link
+  hr 
   p Comments: 
    b= req.bug.comments.length    
   each comment in req.bug.comments

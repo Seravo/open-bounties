@@ -48,7 +48,7 @@ exports.create = function(req, res) {
   console.log(bug);
   bug.author = req.user;
   // preliminary bugzilla scraper
-  request(req.body.link, function(err, res, body) {
+  request(req.body.link, function(err, resp, body) {
     $ = cheerio.load(body);
     var scrapedStatus = $('#static_bug_status'); //use CSS selector here
     var scrapedAssignee = $('.fn');

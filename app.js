@@ -165,7 +165,7 @@ function ensureAuthenticated(req, res, next) {
 setInterval(function() {
         models.Bug.find({}).populate('author', 'username').exec(function(err, bugs) {
         bugs.forEach(function(b){
-        request(b.link, function(err, res, body) {
+        request(b.link, function(err, resp, body) {
         $ = cheerio.load(body);
         var scrapedStatus = $('#static_bug_status'); //use CSS selector here
         var scrapedAssignee = $('.fn');
@@ -179,13 +179,13 @@ setInterval(function() {
              b.bountyStatus = 'In progress'
          }
         
-           if(($(scrapedStatus).text()) === 'RESOLVED FIXED'&&
+           if(($(scrapedStatus).text()) === 'RESOLVED\n          FIXED\n      '&&
         ($(scrapedAssignee).text()).indexOf(b.author.username) !==-1) {
            b.bugStatus = $(scrapedStatus).text()
              b.bountyStatus = 'Fixed'
          }
 
-         if(($(scrapedStatus).text()) === 'VERIFIED FIXED'&&
+         if(($(scrapedStatus).text()) === 'VERIFIED\n          FIXED\n      '&&
         ($(scrapedAssignee).text()).indexOf(b.author.username) !==-1) {
            b.bugStatus = $(scrapedStatus).text()
              b.bountyStatus = 'Released'
@@ -206,6 +206,6 @@ setInterval(function() {
      
   }, 43200000)
 
-//5000 require('./testdata')
+//43200000 require('./testdata')
 
 
