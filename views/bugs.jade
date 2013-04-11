@@ -18,7 +18,7 @@ block content
       td= bug.description
       td
         a(href="/user/"+bug.author._id)=bug.author.username
-      td= bug.status
+      td= bug.bountyStatus
       td
         a(href=bug.link)=bug.link
       td#rowId(style= "display:none")= bug.id

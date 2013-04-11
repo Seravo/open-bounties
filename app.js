@@ -9,6 +9,8 @@ var express = require('express')
   , GoogleStrategy = require('passport-google').Strategy
   , TwitterStrategy = require('passport-twitter').Strategy
   , models = require('./dbModels')
+  , cheerio = require('cheerio')
+  , request = require('request')
   , passwordHash = require('password-hash');
 var FACEBOOK_APP_ID = "..."
 var FACEBOOK_APP_SECRET = "...";
@@ -160,6 +162,50 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
-//require('./testdata')
+setInterval(function() {
+        models.Bug.find({}).populate('author', 'username').exec(function(err, bugs) {
+        bugs.forEach(function(b){
+        request(b.link, function(err, res, body) {
+        $ = cheerio.load(body);
+        var scrapedStatus = $('#static_bug_status'); //use CSS selector here
+        var scrapedAssignee = $('.fn');
+        /*console.log('bugStatus:' + b.bugStatus)
+        console.log('scrapedStatus:' + ($(scrapedStatus).text()))*/
+        if (($(scrapedStatus).text()) != b.bugStatus) {
+
+         if(($(scrapedStatus).text()).substring(0, 3) === 'ASS'&&
+        ($(scrapedAssignee).text()).indexOf(b.author.username) !==-1) {
+           b.bugStatus = $(scrapedStatus).text()
+             b.bountyStatus = 'In progress'
+         }
+        
+           if(($(scrapedStatus).text()) === 'RESOLVED FIXED'&&
+        ($(scrapedAssignee).text()).indexOf(b.author.username) !==-1) {
+           b.bugStatus = $(scrapedStatus).text()
+             b.bountyStatus = 'Fixed'
+         }
+
+         if(($(scrapedStatus).text()) === 'VERIFIED FIXED'&&
+        ($(scrapedAssignee).text()).indexOf(b.author.username) !==-1) {
+           b.bugStatus = $(scrapedStatus).text()
+             b.bountyStatus = 'Released'
+         }
+         b.save(function(err) {
+           if (err) {
+             console.log('statusCheck fail')
+           } 
+       })
+       }
+       else{
+         console.log('statusCheck complete, no changes made')
+       }
+     });
+              });
+     })
+  console.log(Date())
+     
+  }, 43200000)
+
+//5000 require('./testdata')
 
 

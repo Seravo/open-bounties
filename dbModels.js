@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 var Schema = mongoose.Schema
   , authTypes = ['facebook']
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema
+var cheerio = require('cheerio');
 
 /*create 2 schemas*/
 var BugSchema = new Schema(
@@ -25,11 +26,10 @@ var BugSchema = new Schema(
     username: {type: String},
     createdAt: { type : Date, default : Date.now }
   }],
-	status: {type : String, default : 'Open'},
+	bountyStatus:{type : String},
+	bugStatus:{type : String},
 	link: String,
-   totalSum: {type : Number, default : 5},
-	status: {type : String},
-	link: String,
+    totalSum: {type : Number, default : 5}
 }); 
 
 
@@ -52,11 +52,12 @@ var UserSchema = new Schema(
 // });
 
 /*Add extra method to BugSchema Models*/
-BugSchema.methods.saveone = function () {
+BugSchema.methods = {
+	saveone: function () {
 	this.save()
 	console.log('Document Is Successfully Added')
 }
-
+}
 /*Compiling models*/
 var Bug = mongoose.model('Bug',BugSchema);
 var User = mongoose.model('User',UserSchema);

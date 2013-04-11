@@ -48,12 +48,16 @@ exports.create = function(req, res) {
   console.log(bug);
   bug.author = req.user;
   // preliminary bugzilla scraper
-  request(req.body.link, function(err, resp, body) {
+  request(req.body.link, function(err, res, body) {
     $ = cheerio.load(body);
-    scrapedStatus = $('#static_bug_status'); //use CSS selector here
+    var scrapedStatus = $('#static_bug_status'); //use CSS selector here
+    var scrapedAssignee = $('.fn');
 
-    if (scrapedStatus && ($(scrapedStatus).text()).substring(0, 3) === 'NEW') {
-      bug.status = 'Open';
+    if (($(scrapedStatus).text()).substring(0, 3) === 'NEW' &&
+     ($(scrapedAssignee).text()).indexOf('Nobody; OK to take') !==-1) {
+      bug.bountyStatus = 'Open';
+      bug.bugStatus = $(scrapedStatus).text();
+
       bug.save(function(err) {
         if (err) {
           res.render('/addBug');

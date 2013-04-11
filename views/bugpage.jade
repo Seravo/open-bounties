@@ -18,10 +18,10 @@ block content
        =req.bug.author.username
    p 
     b Status:  
-    =req.bug.status
+    =req.bug.bountyStatus
    p 
     b Link:  
-    =req.bug.link
+     a(href=req.bug.link)=req.bug.link
     hr
   p Comments: 
    b= req.bug.comments.length    
