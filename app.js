@@ -141,7 +141,10 @@ app.get('/addBug',ensureAuthenticated ,bug.add);
 app.post('/addBug',ensureAuthenticated ,bug.create);
 app.post('/deleteBug', bug.remove);
 app.get('/bug/:bugid', bug.index)
+app.post('/bugpage/:bugid/claim',ensureAuthenticated ,bug.claim);
+
 app.param('bugid', bug.find);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

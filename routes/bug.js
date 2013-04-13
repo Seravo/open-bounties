@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
 var emailer = require ('../routes/emailer');
+var moment = require('moment');
 // var async = require('async');
 
 exports.index = function(req, res) {
@@ -11,10 +12,16 @@ exports.index = function(req, res) {
   })
 }
 
+/*VERY STRANGE 
+
+  .populate('author', 'username').populate('claimer', 'username') 
+
+  works fine
+*/
 exports.find = function(req, res, next, id) {
   models.Bug.findOne({
     _id: id
-  }).populate('author', 'username').exec(function(err, bug) {
+  }).populate('author', 'username').populate('claimer', 'username').exec(function(err, bug) { 
     console.log(req.isAuthenticated() + "----> user ")
     if (err) return next(err)
     if (!bug) return next(new Error('Failed to load user ' + id))
@@ -85,6 +92,31 @@ exports.remove = function(req, res) {
     _id: id
   });
   bug.remove(function(err) {
+    //if err  ----do something 
     res.redirect('/bugs');
   });
+}
+
+//claim
+exports.claim = function (req, res){
+
+  var myHours = req.body.hours;
+  var myClaimer = req.user.id;
+  var myDeadline = new Date();
+  console.log(req.bug.deadline);
+
+  var myDeadline = moment(req.bug.deadline);
+
+  myDeadline.add('hours', myHours);
+  console.log(myDeadline.format());
+
+   var bug = models.Bug.findOne({
+    _id: req.bug.id
+  });
+  
+
+
+    bug.update({ claimer: myClaimer, deadline: myDeadline.format() } , function(err){
+    res.redirect('/user/' + req.user.id);  
+  })
 }

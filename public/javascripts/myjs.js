@@ -25,7 +25,7 @@ var bws = getBrowserHeight();
 shadow.style.width = bws.width + 'px';
 shadow.style.height = bws.height + 'px';
 question.style.left = parseInt((bws.width - 350) / 2)+ 'px';
-question.style.top = parseInt((bws.height - 200) / 2)+ 'px';
+question.style.top = parseInt((bws.height - 450) / 2)+ 'px';
 shadow = null;
 question = null;
 }

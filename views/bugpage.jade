@@ -5,14 +5,16 @@ block content
     h2.form-signin-heading Bug page     
         small 
          =req.bug.bugName
-         button.btn.btn-mini.btn-primary(style='float:right;') Claim bounty! 
+         a(href="#claimBountyWin", role='button', data-toggle='modal')
+          button.btn.btn-mini.btn-primary(style='float:right;') Claim bounty! 
     b Full description: 
     =req.bug.description   
     div(style="float: right;") 
      b=req.bug.totalSum
      b € 
-     a(href="#", onclick="showLayer();" )
-      button.btn.btn-mini.btn-success Add money   
+      a(href="#", onclick="showLayer();" )
+       //- a(href="#paymentWin", role='button', data-toggle='modal')
+       button.btn.btn-mini.btn-success Add money   
    p 
     b Posted by:  
       a(href='/user/' + req.bug.author.id)
@@ -24,6 +26,19 @@ block content
     b Link:  
       a(href= req.bug.link)
        =req.bug.link
+   p 
+    b Claimed by 
+    if (req.bug.claimer)
+     a(href='/user/' + req.bug.claimer.id)
+      =req.bug.claimer.username  
+    else 
+     | N/A
+   p 
+    b Deadline: 
+    if (req.bug.claimer)
+      =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
+    else
+     | N/A  
   hr 
   p Comments: 
    b= req.bug.comments.length    
@@ -61,3 +76,66 @@ block content
       .control-group
        .controls
         button.btn.btn-primary.btn-small Donate
+
+     //Payment form Initial code.
+      #paymentWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+       .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel Claim bounty
+       .modal-body
+        form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
+         #shadow.opaqueLayer
+          #question.questionLayer
+           input.btn.btn-close.offset3(type='button', onclick='hideLayer();', value='X')
+           h3 Donate Form
+            .modal-body
+             .control-group
+             label.control-label.validate(for='sum') Donation Amount
+              .controls
+               .input-prepend
+                .span.add-on  € 
+                input.input-mini(name='sum', type='number', value='5', required='required')
+              .controls
+               label.checkbox
+                input#tos-agreed(type='checkbox',name='tos-agreed', required='required') 
+                I Agree to the              
+                a(href='#') Terms of Service
+          .control-group
+           .controls
+            button.btn.btn-primary.btn-small Donate
+       .modal-footer
+        button.btn(data-dismiss='modal', aria-hidden='true') Close
+        button.btn.btn-primary Save changes
+        
+
+   //Claim bounty window
+  #claimBountyWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+   .modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h3#myModalLabel Claim bounty
+   .modal-body
+    p Some kind of agreement here..
+    .alert.alert-error
+     | In that moment only 2 days is max
+    p Please, choose how much time you are going to spent: 
+     select.hours(style='width:60px')
+      option 12 
+      option 24 
+      option 36 
+      option 48 
+     |&nbsp;hours
+   .modal-footer
+    form(method="post",  action="/bugpage/#{req.bug._id}/claim")
+     input.inputHours(name='hours', type='hidden', value = '12') 
+     button.btn(data-dismiss='modal', aria-hidden='true') Close
+     button.btn.btn-primary Do it!
+
+
+     script 
+      $('.hours').click(function() {
+          var hours = this.value;
+          $('.inputHours').attr('value', hours);
+          //alert(this.value);
+        })
+
+

@@ -31,7 +31,7 @@ var BugSchema = new Schema(
 	link: String,
     totalSum: {type : Number, default : 5},
 	status: {type : String, default : 'Open'},
-	claimer : { type : Schema.ObjectId, ref : 'User' },
+	claimer : { type : Schema.ObjectId, ref : 'User'},
 	deadline : { type : Date, default: Date.now}
 
 }); 
