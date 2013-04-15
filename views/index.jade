@@ -18,13 +18,24 @@ block content
   hr 
   each bug in req.bugs
    div(class="well well-small;", style= "height:100px;")  
-    div(style="float:left") 
-     p
-      b Title: 
-      =  bug.bugName 
+    div(style="float:left;") 
+     b Title: 
+     =  bug.bugName 
+     | &nbsp;
+     case bug.bountyStatus 
+      when 'Open'  
+       span.label.label-info(style="margin-right:5px")
+        = bug.bountyStatus 
+      when 'In Progress' 
+       span.label.label-important(style="margin-right:5px")
+        = bug.bountyStatus  
+     span.badge.badge-warning  
+      =bug.totalSum 
+      | €   
      p
        b Description: 
-       = bug.description   
+       = bug.description  
+       
      a.btn.btn-info(style="margin-top: 20px", href="/bug/" + bug._id) See bug      
     div(style="float: right")  
       p
@@ -49,6 +60,7 @@ block content
   hr
   .footer
     p © The Wanderers 2013
+
 
 
          //- each bug in bugs

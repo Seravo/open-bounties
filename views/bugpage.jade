@@ -5,40 +5,58 @@ block content
     h2.form-signin-heading Bug page     
         small 
          =req.bug.bugName
-         a(href="#claimBountyWin", role='button', data-toggle='modal')
-          button.btn.btn-mini.btn-primary(style='float:right;') Claim bounty! 
+         if (req.bug.bountyStatus === 'Open')
+          a(href="#", onclick="showLayer();", style='float:right; padding: 5px' )
+           button.btn.btn-mini.btn-success Add money   
+          a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
+           button.btn.btn-mini.btn-primary Claim bounty!
     b Full description: 
     =req.bug.description   
-    div(style="float: right;") 
-     b=req.bug.totalSum
-     b € 
-      a(href="#", onclick="showLayer();" )
-       //- a(href="#paymentWin", role='button', data-toggle='modal')
-       button.btn.btn-mini.btn-success Add money   
+    div(style="float: right;")
+     span.badge.badge-warning  
+      =req.bug.totalSum 
+      | €
+     if (req.bug.bountyStatus === 'Open') 
+        //- a(href="#paymentWin", role='button', data-toggle='modal')
    p 
     b Posted by:  
       a(href='/user/' + req.bug.author.id)
        =req.bug.author.username
-   p 
+   p.status 
     b Status:  
     =req.bug.bountyStatus
    p 
     b Link:  
       a(href= req.bug.link)
        =req.bug.link
+  if (req.bug.claimer)  
    p 
     b Claimed by 
-    if (req.bug.claimer)
-     a(href='/user/' + req.bug.claimer.id)
-      =req.bug.claimer.username  
-    else 
-     | N/A
+    a(href='/user/' + req.bug.claimer.id)
+      =req.bug.claimer.username   
+   //- p 
+   //-  b Deadline: 
+   //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
    p 
-    b Deadline: 
-    if (req.bug.claimer)
-      =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
-    else
-     | N/A  
+    b Time left: 
+    = (req.diff - req.diff % 60) / 60
+      | &nbsp;hours     
+    = req.diff % 60
+      | &nbsp;minutes
+   p 
+   .alert.alert-error
+    button.close(type='button', data-dismiss='alert') ×
+    h4 This bounty in progress. 
+     = req.bug.claimer.username   
+      | &nbsp;is working on a solution!    
+  else 
+   p 
+   .alert.alert-info
+    button.close(type='button', data-dismiss='alert') ×
+    h4 Open Bounty!
+      | This bounty is opened and you might claim it ;) 
+ 
+       
   hr 
   p Comments: 
    b= req.bug.comments.length    
@@ -118,7 +136,7 @@ block content
     .alert.alert-error
      | In that moment only 2 days is max
     p Please, choose how much time you are going to spent: 
-     select.hours(style='width:60px')
+     select.hours(style='width:60px;')
       option 12 
       option 24 
       option 36 
@@ -130,12 +148,10 @@ block content
      button.btn(data-dismiss='modal', aria-hidden='true') Close
      button.btn.btn-primary Do it!
 
-
      script 
       $('.hours').click(function() {
           var hours = this.value;
           $('.inputHours').attr('value', hours);
           //alert(this.value);
         })
-
 
