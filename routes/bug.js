@@ -72,13 +72,6 @@ exports.create = function(req, res) {
           res.render('/addBug');
         } else {
           res.redirect('bugs');
-          //send email to the project lead, will be replaced later
-          // mrprojectlead@gmail.com pass:Leadersh1p, sends to itsself
-          emailer.sendMail('http://localhost:3000/bug/' + bug._id, function(err) {
-        if (err) {
-          console.log(err)
-        }
-      })
         }
       })
     } else {
@@ -119,10 +112,15 @@ exports.claim = function (req, res){
    var bug = models.Bug.findOne({
     _id: req.bug.id
   });
-  
-
 
     bug.update({ claimer: myClaimer, deadline: myDeadline.format() } , function(err){
     res.redirect('/user/' + req.user.id);  
+    //send email to the project lead
+    // mrprojectlead@gmail.com pass:Leadersh1p, sends to itsself for now
+    emailer.sendMail('http://localhost:3000/bug/' + req.bug.id, function(err) {
+      if (err) {
+        console.log(err)
+      }
+    })
   })
 }
