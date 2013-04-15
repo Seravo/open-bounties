@@ -45,7 +45,9 @@ exports.list = function(req, res) {
 //render addBug page
 exports.add = function(req, res) {
   res.render('addBug', {
-    req: req
+    req: req,
+    incorrect: 'no',
+    bug: new models.Bug({})
   });
 }
 
@@ -80,7 +82,11 @@ exports.create = function(req, res) {
         }
       })
     } else {
-      res.redirect('/addBug');
+      res.render('addBug', {
+        req: req,
+        incorrect: 'yes',
+        bug: bug
+  });
     }
   });
 }

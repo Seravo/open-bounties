@@ -1,14 +1,23 @@
 extends layout
 block content
+  if (incorrect !== 'no')
+    .fade.in.alert.alert-block.alert-warning
+      a.close(data-dismiss="alert") x
+      p Check the input values
   body      
    form(action='/addBug', method='post')
-    h2.form-signin-heading Bug creation form
-    input.input-block-level(type='text', name='bugName', placeholder='Title')
-    input.input-block-level(type='text', name='link', placeholder='Link')
+    h2.form-signin-heading Bounty creation form
+    input.input-block-level(type='text', name='bugName', value = bug.bugName, placeholder='Title')
+    input.input-block-level(type='text', name='link', value = bug.link, placeholder='Link')
     //-input.input-block-level(type='text', name='author', value=req.user._id)
-    textarea(rows='3', type='text', name='description', placeholder='Description')
+    textarea(rows='3', type='text', name='description', placeholder='Description')= bug.description
     br  
     button.btn.btn-large.btn-primary(type='submit') Submit
 
-
-
+//-    #myModal.modal.hide.fadeModal header
+//-    .modal-header
+//-        button.close(type='button', aria-hidden='true', show='true') ×
+//-        h3 Modal header
+//-      .modal-body
+//-        p One fine body…
+//-      .modal-footer
