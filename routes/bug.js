@@ -7,7 +7,7 @@ var moment = require('moment');
 // var async = require('async');
 
 exports.index = function(req, res) {
-  /*
+/*
    ********DO NOT DELETE THIS!********************
 
   if (req.bug.bountyStatus === 'In Progress') {

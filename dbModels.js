@@ -88,6 +88,10 @@ var UserSchema = new Schema({
 	name: String,
 	email: String,
 	username: String,
+	imagePath: {
+		type: String,
+		default: '/pictures/defaultpic.png'
+	},
 	provider: String,
 	hashed_password: String,
 	// salt : String,

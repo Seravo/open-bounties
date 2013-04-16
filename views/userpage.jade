@@ -2,23 +2,18 @@ extends layout
 block content
   body   
    h2.form-signin-heading Profile
-   p Your name is  
+   .row
+    .span6 
+     p Your name is  
       =req.user.name
-   p Email is 
-    =req.user.email
+     p Email is 
+      =req.user.email
+    .span3
+     img.img-polaroid(alt="Picture", width="140", height="140", src= req.user.imagePath)
 
+  
 
-   //-some scripts
-  //- script(src='javascripts/checkbox.js')  
-  //- script
-  //-  $("tr").click(function(){
-  //-    $(this).toggleClass('success');
-
-  //-    var href = $(this).addAttr("href");
-  //-       if(href) {
-  //-           window.location = href;
-  //-       }
-  //-  })
-
-
+  form(action='/uploadImage', method='POST', enctype="multipart/form-data")
+   input(type="file", name="thumbnail")
+   input(type='submit')
 

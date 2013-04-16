@@ -10,7 +10,7 @@ exports.index = function( req, res, next){
     	}
          var lastPage = Math.ceil(count/pageList)-1
          models.Bug.find({})
-	 	    .populate('author', 'username')
+	 	    .populate('author') //populate everything
 	 	    .skip(pageList * page)
             .limit(pageList)
             .sort({createdAt: 1})
