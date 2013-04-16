@@ -64,17 +64,21 @@ var BugSchema = new Schema({
 		type: Number,
 		default: 5
 	},
-	status: {
-		type: String,
-		default: 'Open'
-	},
+
+	// What is it?
+
+	// status: {
+	// 	type: String,
+	// 	default: 'Open'
+	// },
+	
 	claimer: {
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
 	deadline: {
 		type: Date,
-		default: Date.now
+		//default: Date.now
 	}
 
 });

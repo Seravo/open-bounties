@@ -29,7 +29,7 @@ block content
     b Link:  
       a(href= req.bug.link)
        =req.bug.link
-  if (req.bug.claimer)  
+  if (req.bug.bountyStatus === 'In Progress')  
    p 
     b Claimed by 
     a(href='/user/' + req.bug.claimer.id)

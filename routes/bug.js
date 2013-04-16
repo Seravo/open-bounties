@@ -7,7 +7,7 @@ var moment = require('moment');
 // var async = require('async');
 
 exports.index = function(req, res) {
-/*
+  /*
    ********DO NOT DELETE THIS!********************
 
   if (req.bug.bountyStatus === 'In Progress') {
@@ -29,13 +29,25 @@ exports.index = function(req, res) {
 
   var myDeadline = moment(req.bug.deadline);
   if (myDeadline.diff(moment()) < 0) {
-    req.bug.bountyStatus = 'Open';
+    // console.log('foo')
+    // console.log(req.bug.bountyStatus)
+    // req.bug.bountyStatus = 'Open';
+
+    var bug = models.Bug.findOne({
+      _id: req.bug.id,
+    });      
+
+    bug.update({
+      bountyStatus: 'Open',
+      deadline: moment().format()
+    });
+    // console.log(req.bug.bountyStatus)
+
     res.render('bugpage', {
       req: req
     })
 
   } else {
-
     var diff = myDeadline.diff(moment(), 'minutes');
     req.diff = diff;
 
