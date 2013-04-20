@@ -9,7 +9,7 @@
     2.Functionaity
     
     
-    3.Contributers: Borisenkova Svetlana
+    3.Contributors: Borisenkova Svetlana
                     Danchenkov Egor
                     Shakurova Olga     
 ****************************
