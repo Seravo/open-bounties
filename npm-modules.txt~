@@ -1,0 +1,2 @@
+sudo npm install express, moment, mongoose, passport, passport-local, passport-facebook, passport-google, passsport-twitter, password-hash, request, cheerio, nodemailer, jade
+
