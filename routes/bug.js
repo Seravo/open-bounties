@@ -73,6 +73,7 @@ exports.find = function(req, res, next, id) {
     if (!bug) return next(new Error('Failed to load user ' + id))
     req.bug = bug;
     next()
+    console.log(req.isAuthenticated())
 
   })
 }
@@ -92,7 +93,7 @@ exports.list = function(req, res) {
 exports.add = function(req, res) {
   res.render('addBug', {
     req: req,
-    incorrect: 'no',
+    correct: '1',
     bug: new models.Bug({})
   });
 }
@@ -108,8 +109,9 @@ exports.create = function(req, res) {
     var scrapedStatus = $('#static_bug_status'); //use CSS selector here
     var scrapedAssignee = $('.fn');
 
-    if (($(scrapedStatus).text()).substring(0, 3) === 'NEW' && ($(scrapedAssignee).text()).indexOf('Nobody; OK to take') !== -1) {
-      bug.bountyStatus = 'Open';
+    if (($(scrapedStatus).text()).substring(0, 3) === 'NEW' 
+      && ($(scrapedAssignee).text()).indexOf('Nobody; OK to take') !== -1) {
+      bug.bountyStatus = 'OPEN';
       bug.bugStatus = $(scrapedStatus).text();
 
       bug.save(function(err) {
@@ -122,7 +124,7 @@ exports.create = function(req, res) {
     } else {
       res.render('addBug', {
         req: req,
-        incorrect: 'yes',
+        correct: '0',
         bug: bug
       });
     }

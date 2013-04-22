@@ -5,11 +5,17 @@ block content
     h2.form-signin-heading Bug page     
         small 
          =req.bug.bugName
-         if (req.bug.bountyStatus === 'Open')
+        - if (req.bug.bountyStatus === 'Open' && req.isAuthenticated()===true)
           a(href="#", onclick="showLayer();", style='float:right; padding: 5px' )
            button.btn.btn-mini.btn-success Add money   
           a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
            button.btn.btn-mini.btn-primary Claim bounty!
+        - else
+          a(href="/login/", style='float:right; padding: 5px')
+           button.btn.btn-mini.btn-success Add money   
+          a(href="/login/", style='float:right; padding: 5px')
+           button.btn.btn-mini.btn-primary Claim bounty!
+
     b Full description: 
     =req.bug.description   
     div(style="float: right;")

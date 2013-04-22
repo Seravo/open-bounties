@@ -204,19 +204,22 @@ setInterval(function() {
         console.log('scrapedStatus:' + ($(scrapedStatus).text()))*/
         if (($(scrapedStatus).text()) != b.bugStatus) {
 
-          if (($(scrapedStatus).text()).substring(0, 3) === 'ASS' && ($(scrapedAssignee).text()).indexOf(b.author.username) !== -1) {
+          if (($(scrapedStatus).text()).substring(0, 4) === 'ASSI' 
+            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
             b.bugStatus = $(scrapedStatus).text()
-            b.bountyStatus = 'In progress'
+            b.bountyStatus = 'IN PROGRESS'
           }
 
-          if (($(scrapedStatus).text()) === 'RESOLVED\n          FIXED\n      ' && ($(scrapedAssignee).text()).indexOf(b.author.username) !== -1) {
-            b.bugStatus = $(scrapedStatus).text()
-            b.bountyStatus = 'Fixed'
+          if (($(scrapedStatus).text()).trim().replace(/\s{2,}/g, ' ') === 'RESOLVED FIXED' 
+            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
+            b.bugStatus = 'RESOLVED FIXED'
+            b.bountyStatus = 'FIXED'
           }
 
-          if (($(scrapedStatus).text()) === 'VERIFIED\n          FIXED\n      ' && ($(scrapedAssignee).text()).indexOf(b.author.username) !== -1) {
-            b.bugStatus = $(scrapedStatus).text()
-            b.bountyStatus = 'Released'
+          if (($(scrapedStatus).text()).trim().replace(/\s{2,}/g, ' ') === 'VERIFIED FIXED' 
+            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
+            b.bugStatus = 'VERIFIED FIXED'
+            b.bountyStatus = 'RELEASED'
           }
           b.save(function(err) {
             if (err) {
@@ -232,5 +235,3 @@ setInterval(function() {
   console.log(Date())
 
 }, 43200000)
-
-//43200000 require('./testdata')
