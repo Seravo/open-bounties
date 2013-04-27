@@ -1,14 +1,14 @@
  body {
-      padding-top: 20px;
-      padding-bottom: 40px;
+      padding-top: 00px;
+      padding-bottom: 000px;
       }
       /* Custom container */
       .container-narrow {
       margin: 0 auto;
-      max-width: 700px;
+      max-width: 900px;
       }
       .container-narrow > hr {
-      margin: 30px 0;
+      /*margin: 30px 0;*/
       }
       /* Main marketing message and sign up button */
       .jumbotron {
@@ -98,3 +98,86 @@ padding:10px;
 
 p {margin-left:20px;}*/
 
+.authorInfo{
+   float: right;
+   /*background-color: yellow;*/
+   display:inline-block;
+   width: 120px;
+}
+
+
+.bountyInfo {
+  /*background-color: pink;*/
+  display:inline-block;
+  width: 250px;
+}
+
+.bountyBox{
+ 
+  min-height: 120px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+  margin-top: 5px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.bountyBoxRight{
+ 
+  min-height: 120px;
+  background-color: pink;
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+  margin-top: 5px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.leftSide{
+  display: inline-block;
+  float: left;
+  width: 430px;
+
+}
+.rightSide{
+  display: inline-block;
+  float: right;
+  width: 430px;
+}
+
+.content{
+
+}
+
+.bottomContent{
+  /*position: absolute;*/
+/*  bottom: 0;
+  height: 80px;*/
+  padding: 40px;
+  clear: both;
+}
+
+.footer { 
+
+} 
+
+/*p.block {
+    width: 300px;
+    white-space: nowrap;
+    word-wrap: break-word;
+}*/

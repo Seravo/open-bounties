@@ -2,28 +2,22 @@ extends layout
 block content
   body   
   .page-header
-    h2.form-signin-heading Bug page     
+    h2.form-signin-heading Bonty page     
         small 
          =req.bug.bugName
-        - if (req.bug.bountyStatus === 'Open' && req.isAuthenticated()===true)
+         span.badge.badge-warning(style="margin-left:5px;") 
+          =req.bug.totalSum 
+          | €
+        - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true)
           a(href="#", onclick="showLayer();", style='float:right; padding: 5px' )
            button.btn.btn-mini.btn-success Add money   
           a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
            button.btn.btn-mini.btn-primary Claim bounty!
-        - else
-          a(href="/login/", style='float:right; padding: 5px')
-           button.btn.btn-mini.btn-success Add money   
-          a(href="/login/", style='float:right; padding: 5px')
-           button.btn.btn-mini.btn-primary Claim bounty!
-
     b Full description: 
     =req.bug.description   
-    div(style="float: right;")
-     span.badge.badge-warning  
-      =req.bug.totalSum 
-      | €
-     if (req.bug.bountyStatus === 'Open') 
-        //- a(href="#paymentWin", role='button', data-toggle='modal')
+
+     //- if (req.bug.bountyStatus === 'OPEN') 
+     //-    a(href="#paymentWin", role='button', data-toggle='modal')
    p 
     b Posted by:  
       a(href='/user/' + req.bug.author.id)

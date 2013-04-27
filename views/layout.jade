@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title= 'Bounty'
+    title= 'OpenBounty'
     link(rel='stylesheet', href='../stylesheets/bootstrap.css')
     link(rel='stylesheet', href='../stylesheets/style.css')
     script(src='../javascripts/jquery.js')    
@@ -9,7 +9,7 @@ html
     script(src='../javascripts/myjs.js')   
     script(src='../javascripts/bootstrap-modal.js')
   body
-  .container-narrow
+   .container-narrow
       .masthead
         ul.nav.nav-pills.pull-right
           li
@@ -24,10 +24,15 @@ html
             li
               a(href='/logout') Logout
            else
+            //- li
+            //-   a(href='/signup') Sign up
+            //- li(style="margin-top: 7px") or
             li
               a(href='/login') Login
-        h3.muted Bounty Project  
+        h3.muted OpenBounty.org 
+        hr
        block content
+
 
 
 

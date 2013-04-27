@@ -38,7 +38,7 @@ exports.index = function(req, res) {
     });      
 
     bug.update({
-      bountyStatus: 'Open',
+      bountyStatus: 'OPEN',
       deadline: moment().format()
     });
     // console.log(req.bug.bountyStatus)

@@ -7,7 +7,7 @@ block content
        if(e!=='')
          p=e
   body
-  form(action='/signup', method='post')
+   form(action='/signup', method='post')
     h2.form-signin-heading Register form:
     input.input-block-level(type='text', name='name', value = user.name, placeholder='Name')
     input.input-block-level(type='text', name='email', value = user.email, placeholder='E-mail')
@@ -17,3 +17,10 @@ block content
       input(type='checkbox', value='remember-me')
       | I agree with the rules
     button.btn.btn-large.btn-primary(type='submit') Submit
+   br
+    a(href="/auth/facebook")
+     img(src="pictures/facebook.png")
+    a(href="/auth/google")
+     img(src="pictures/grey_google_stamp.png")
+    a(href="#")
+     img(src="pictures/grey_twitter_stamp.png")
