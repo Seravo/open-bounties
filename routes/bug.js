@@ -152,7 +152,7 @@ exports.claim = function(req, res) {
 
   var myDeadline = moment(req.bug.deadline);
 
-  myDeadline.add('hours', myHours);
+  myDeadline.add('seconds', myHours);
   console.log(myDeadline.format());
 
   var bug = models.Bug.findOne({

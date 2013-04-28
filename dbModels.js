@@ -65,6 +65,8 @@ var BugSchema = new Schema({
 		default: 5
 	},
 
+	tags: {type: [], get: getTags, set: setTags},
+
 	// What is it?
 
 	// status: {
@@ -116,6 +118,18 @@ BugSchema.methods = {
 var Bug = mongoose.model('Bug', BugSchema);
 var User = mongoose.model('User', UserSchema);
 //var Simple = mongoose.model('Simple',SimpleSchema);
+
+var getTags = function (tags) {
+  return tags.join(',')
+}
+
+/**
+ * Setters
+ */
+
+var setTags = function (tags) {
+  return tags.split(',')
+}
 
 
 /*Exports model's instances*/

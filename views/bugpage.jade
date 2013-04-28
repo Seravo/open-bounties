@@ -1,30 +1,55 @@
 extends layout
 block content
   body   
+  if (!req.isAuthenticated())
+   .alert.alert-error
+    button.close(type='button', data-dismiss='alert') ×
+    h4 Notice!
+    p In order to claim this bounty and try to fix it, you have to 
+     a(href="#logIn", data-toggle='modal') login 
+     |  . But you still can add more money to support!
+  else
+   if (req.bug.bountyStatus === 'In Progress')  
+    .alert.alert-error
+     button.close(type='button', data-dismiss='alert') ×
+     h4 This bounty in progress. 
+     p 
+      = req.bug.claimer.username   
+      | &nbsp;is working on a solution!
+   else 
+     .alert.alert-info
+      button.close(type='button', data-dismiss='alert') ×
+      h4 Open Bounty!
+      p This bounty is opened and you might claim it ;)    
+
   .page-header
     h2.form-signin-heading Bonty page     
         small 
          =req.bug.bugName
-         span.badge.badge-warning(style="margin-left:5px;") 
+        case req.bug.bountyStatus 
+         when 'OPEN'  
+          span.label.label-info(style="margin-left:5px;")
+           = req.bug.bountyStatus 
+         when 'In Progress' 
+          span.label.label-important(style="margin-left:5px;")
+           = req.bug.bountyStatus  
+        span.badge.badge-warning(style="margin-left:5px;") 
           =req.bug.totalSum 
           | €
-        - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true)
-          a(href="#", onclick="showLayer();", style='float:right; padding: 5px' )
-           button.btn.btn-mini.btn-success Add money   
+        - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
           a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
            button.btn.btn-mini.btn-primary Claim bounty!
-    b Full description: 
-    =req.bug.description   
-
+        a(href="#", onclick="showLayer();", style='float:right; padding: 5px' )
+         button.btn.btn-mini.btn-success Add money
      //- if (req.bug.bountyStatus === 'OPEN') 
      //-    a(href="#paymentWin", role='button', data-toggle='modal')
    p 
     b Posted by:  
       a(href='/user/' + req.bug.author.id)
        =req.bug.author.username
-   p.status 
-    b Status:  
-    =req.bug.bountyStatus
+   p 
+    b Full description: 
+    =req.bug.description   
    p 
     b Link:  
       a(href= req.bug.link)
@@ -42,21 +67,7 @@ block content
     = (req.diff - req.diff % 60) / 60
       | &nbsp;hours     
     = req.diff % 60
-      | &nbsp;minutes
-   p 
-   .alert.alert-error
-    button.close(type='button', data-dismiss='alert') ×
-    h4 This bounty in progress. 
-     = req.bug.claimer.username   
-      | &nbsp;is working on a solution!    
-  else 
-   p 
-   .alert.alert-info
-    button.close(type='button', data-dismiss='alert') ×
-    h4 Open Bounty!
-      | This bounty is opened and you might claim it ;) 
- 
-       
+      | &nbsp;minutes       
   hr 
   p Comments: 
    b= req.bug.comments.length    

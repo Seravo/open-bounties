@@ -1,11 +1,16 @@
  body {
       padding-top: 00px;
       padding-bottom: 000px;
+      width: 80%;
+      margin-left: 10%;
+      background-color: #F5F5F5;
+      font-family: Verdana, Tahoma, arial, geneva, Helvetica, sans-serif;
+      font-size: 11px;
       }
       /* Custom container */
       .container-narrow {
       margin: 0 auto;
-      max-width: 900px;
+      max-width: 100%;
       }
       .container-narrow > hr {
       /*margin: 30px 0;*/
@@ -102,7 +107,7 @@ p {margin-left:20px;}*/
    float: right;
    /*background-color: yellow;*/
    display:inline-block;
-   width: 120px;
+   /*width: 300px;*/
 }
 
 
@@ -115,7 +120,7 @@ p {margin-left:20px;}*/
 .bountyBox{
  
   min-height: 120px;
-  background-color: #f5f5f5;
+  /*background-color: #FAEBD7;*/
   border: 1px solid #e3e3e3;
   padding: 10px;
   margin-top: 5px;
@@ -133,7 +138,7 @@ p {margin-left:20px;}*/
 .bountyBoxRight{
  
   min-height: 120px;
-  background-color: pink;
+  /*background-color: pink;*/
   border: 1px solid #e3e3e3;
   padding: 10px;
   margin-top: 5px;
@@ -151,13 +156,26 @@ p {margin-left:20px;}*/
 .leftSide{
   display: inline-block;
   float: left;
-  width: 430px;
-
+  width: 35%;
 }
-.rightSide{
+
+.centreSide{
   display: inline-block;
+  margin-left: 5%;
+  width: 35%;
+}
+
+
+.rightSide{
+  width: 20%;
   float: right;
-  width: 430px;
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.verticalLine {
+    margin-right: 100px; 
+    border-left:thick solid #ff0000;
 }
 
 .content{
@@ -176,8 +194,24 @@ p {margin-left:20px;}*/
 
 } 
 
-/*p.block {
-    width: 300px;
-    white-space: nowrap;
-    word-wrap: break-word;
-}*/
+p.block {
+    width: 30px;
+/*    white-space: nowrap;
+    word-wrap: break-word;*/
+}
+
+.cssmenu {
+
+        background-color:rgba(245, 245, 220,1);
+        position: fixed;
+        padding: 0px;
+
+        /*height: 50px;*/
+        /*background-color: white;*/
+        width: 80%;
+        /*display: inline-block;*/
+        /*margin-left: 50%;*/
+        /*opacity: 0.2;*/
+        /*width: 800px*/
+        
+}

@@ -1,6 +1,7 @@
 extends layout
 block content
   body
+  .leftSide	
    form(action='/login', method='post')
     h2.form-signin-heading Please log in
     input.input-block-level(type='text', name='username', placeholder='Username')
@@ -9,3 +10,10 @@ block content
     input(type='checkbox', value='remember-me')
     | Remember me
     button.btn.btn-large.btn-primary(type='submit') log in
+  .rightSide(style="margin-top:40px;")
+   a(href="/auth/facebook")
+    img(src="pictures/facebook.png")
+   a(href="/auth/google")
+    img(src="pictures/grey_google_stamp.png")
+   a(href="#")
+    img(src="pictures/grey_twitter_stamp.png")

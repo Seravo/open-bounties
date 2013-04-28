@@ -1,13 +1,13 @@
 extends layout
 block content
   body
-  //- if (!req.isAuthenticated())  
-  //-  hr  
-  //-  .jumbotron
-  //-   h1 Make your software even better!
-  //-   p.lead
-  //-    | Bounty project helps people .
-  //-   a.btn.btn-large.btn-success(href='/signup') Sign up today
+  if (!req.isAuthenticated())  
+   .jumbotron
+    h1 Make your software even better!
+    p.lead
+     | Enjoy software that you use.
+    a.btn.btn-large.btn-success(href='/signup') Join us
+   hr 
   .content
    .leftSide
     h4.text-info Most recent bounties :
@@ -37,9 +37,9 @@ block content
         b Posted by:   
         a(href="/user/" + bug.author._id) 
          =bug.author.username
-       img.img-rounded(style='width:65px; height:65px;float:right', src=bug.author.imagePath)
-   .rightSide
-    h4.text-info Most expensive bounties :
+       img.img-rounded(style='width:70px; height:70px;float:right', src=bug.author.imagePath) 
+   .centreSide
+    h4.text-info Most expensive and open bounties :
     each bug in req.expbugs
      .bountyBoxRight
       .bountyInfo 
@@ -63,13 +63,13 @@ block content
        p 
          b Tags: 
          | C++ , java bla bla     
-        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
         b Posted by:   
         a(href="/user/" + bug.author._id) 
          =bug.author.username
-       img.img-rounded(style='width:65px; height:65px; float:right', src=bug.author.imagePath)
+       img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
     //- .pagination.pagination-left
     //- ul
     //-  - if (req.exppage > 0) {
@@ -84,6 +84,12 @@ block content
     //-   li
     //-    a(href="?exppage=" + req.explastPage) Last  
     //-   - } 
+   .rightSide
+     h4.text-info Info
+     p There are 
+      b=req.count 
+      |  bounties in the system.
+
    .bottomContent
     .pagination.pagination-centered
      ul

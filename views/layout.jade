@@ -9,31 +9,48 @@ html
     script(src='../javascripts/myjs.js')   
     script(src='../javascripts/bootstrap-modal.js')
   body
-   .container-narrow
-      .masthead
-        ul.nav.nav-pills.pull-right
-          li
-            a(href='/') Home
-          li
-            a(href='/users') Users
-          li
-            a(href='/bugs') Bugs
-           if (req.isAuthenticated())
-            li
-              a(href='/user/' + req.user.id) Profile
-            li
-              a(href='/logout') Logout
-           else
-            //- li
-            //-   a(href='/signup') Sign up
-            //- li(style="margin-top: 7px") or
-            li
-              a(href='/login') Login
-        h3.muted OpenBounty.org 
-        hr
-       block content
+    hr
+    ul.nav.nav-pills.pull-left
+     li
+      a(href='/') Home
+     li
+      a(href='/users') Users
+     li
+      a(href='/bugs') Bounties
+     if (req.isAuthenticated())
+      li
+        a(href='/user/' + req.user.id) Profile
+      li
+        a(href='/logout') Logout
+     else
+      li
+        a(href='/signup') Sign up
+      li(style="margin-top: 7px") or
+      li
+       a(href="#logIn", data-toggle='modal') Login
+    h3.muted(style="margin-left: 75%") OpenBounty.org   
+    hr 
+   block content
 
-
-
+ form(action='/login', method='post')
+  #logIn.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true') 
+    .modal-header
+     button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+     h3#myModalLabel Log in
+    .modal-body
+     h2.form-signin-heading Please log in
+     input.input-block-level(type='text', name='username', placeholder='Username')
+     input.input-block-level(type='password', name='password', placeholder='Password')
+     label.checkbox
+     input(type='checkbox', value='remember-me')
+     | Remember me
+    a(href="/auth/facebook")
+     img(src="pictures/facebook.png")
+    a(href="/auth/google")
+     img(src="pictures/grey_google_stamp.png")
+    a(href="#")
+     img(src="pictures/grey_twitter_stamp.png")
+    .modal-footer
+     button.btn.btn-primary log in
 
 

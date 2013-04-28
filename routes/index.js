@@ -8,7 +8,7 @@ exports.index = function(req, res, next) {
             return next(err);
         }
         var lastPage = Math.ceil(count / pageList) - 1
-        models.Bug.find({})
+        models.Bug.find({ bountyStatus: "OPEN" })
             .populate('author') //populate everything
             .skip(pageList * page)
             .limit(pageList)
@@ -16,7 +16,8 @@ exports.index = function(req, res, next) {
             .exec(function(err, bugs) {
             req.expbugs = bugs,
             req.explastpage = lastPage,
-            req.exppage = page
+            req.exppage = page,
+            req.count = count
         });
 
 
