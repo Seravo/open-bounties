@@ -71,8 +71,8 @@ block content
   hr 
   p Comments: 
    b= req.bug.comments.length    
-  each comment in req.bug.comments
-   div.commentbox  
+  each comment in req.bug.comments  
+   div.commentbox
     p= comment.body
    div.commentfooter.shadow
     p

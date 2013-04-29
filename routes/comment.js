@@ -8,6 +8,7 @@ exports.add = function(req, res){
     	body: req.body.body,
     	user: user._id,
     	username: user.username
+     
     }) 
 
 	bug.save();
