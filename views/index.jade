@@ -28,10 +28,13 @@ block content
         span.badge.badge-warning  
          =bug.totalSum 
          | €  
-       p
-         b Description: 
-         = bug.description        
-        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       p 
+         b Tags: 
+         | C++ , java bla bla    
+         //- p
+         //-   b Description: 
+         //-   = bug.description        
+       a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
         b Posted by:   
@@ -41,7 +44,7 @@ block content
    .centreSide
     h4.text-info Most expensive and open bounties :
     each bug in req.expbugs
-     .bountyBoxRight
+     .bountyBox
       .bountyInfo 
        p 
         b Title: 
@@ -57,9 +60,9 @@ block content
         span.badge.badge-warning  
          =bug.totalSum 
          | €  
-       p
-         b Description: 
-         = bug.description      
+       //- p
+       //-   b Description: 
+       //-   = bug.description      
        p 
          b Tags: 
          | C++ , java bla bla     
