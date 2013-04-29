@@ -53,14 +53,16 @@ label.error {
 background-color: #ececec;
 width: 450px;
 padding: 10px;
+margin-left: 70px;
 
 }
 
 .commentfooter{
-background: url(/pictures/arrow.gif) 20px 0px  no-repeat; /*20px 0 equals horizontal and vertical position of arrow. Adjust as desired (ie: 20px -5px).*/
+background: url(/pictures/arrow.png) 20px 0px  no-repeat; /*20px 0 equals horizontal and vertical position of arrow. Adjust as desired (ie: 20px -5px).*/
 /*box-shadow: 2px 2px 3px #000;*/
 padding-left: 58px;
 padding-top: 8px;
+margin-left: 70px;
 margin-bottom: 2em;
 font-size: 90%;
 color: black;

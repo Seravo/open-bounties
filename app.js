@@ -86,7 +86,7 @@ function(username, password, done) {
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "http://192.168.0.100:3000/auth/facebook/callback"
+  callbackURL: "http://localhost:3000/auth/facebook/callback"
 },
 
 function(accessToken, refreshToken, profile, done) {
@@ -101,8 +101,8 @@ function(accessToken, refreshToken, profile, done) {
 }));
 
 passport.use(new GoogleStrategy({
-  returnURL: 'http://localhost:3000/auth/google/return',
-  realm: 'http://www.example.com/'
+  returnURL: 'http://http://haaga-helia.seravo.fi:3000/auth/google/return',
+  realm: 'http://http://haaga-helia.seravo.fi/'
 },
 
 function(identifier, profile, done) {
@@ -141,7 +141,7 @@ app.get('/user/:userid', user.show);
 app.param('userid', user.user);
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback',
-passport.authenticate('facebook', {
+passport.authenticate('facebook', { successRedirect: '/',
   failureRedirect: '/login'
 }),
 

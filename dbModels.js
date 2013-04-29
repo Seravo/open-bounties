@@ -35,6 +35,7 @@ var BugSchema = new Schema({
 			type: Date,
 			default: Date.now
 		}
+               
 	}],
 	additions: [{
 		sum: {
@@ -52,6 +53,7 @@ var BugSchema = new Schema({
 			type: Date,
 			default: Date.now
 		}
+                
 	}],
 	bountyStatus: {
 		type: String
