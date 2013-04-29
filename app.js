@@ -12,8 +12,8 @@ var express = require('express'),
   cheerio = require('cheerio'),
   request = require('request'),
   passwordHash = require('password-hash');
-var FACEBOOK_APP_ID = "..."
-var FACEBOOK_APP_SECRET = "...";
+var FACEBOOK_APP_ID = "449837621775038"
+var FACEBOOK_APP_SECRET = "e98541f9a4c1f1e7eee6fe6be81000b9";
 
 
 var app = express();
@@ -86,7 +86,7 @@ function(username, password, done) {
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
+  callbackURL: "http://haaga-helia.seravo.fi:3000//auth/facebook/callback"
 },
 
 function(accessToken, refreshToken, profile, done) {
