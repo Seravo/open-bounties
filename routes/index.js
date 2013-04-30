@@ -43,9 +43,15 @@ exports.index = function( req, res, next){
 
         models.Bug.find().populate('author').sort({ts: -1}).limit(5).exec(function (err, bugs) {
             req.bugs = bugs;
-            models.Bug.find().populate('author').sort({totalSum: -1}).limit(5).exec(function (err, expbugs) {
+            models.Bug.find({ bountyStatus: "OPEN" }).populate('author').sort({totalSum: -1}).limit(5).exec(function (err, expbugs) {
                 req.expbugs = expbugs;
-                res.render('index', {req: req});
+                models.Bug.count(function(err, count){
+                    if (err) {
+                      return next(err);
+                    }
+                    req.count = count;
+                    res.render('index', {req: req});
+                });
             });
         });
 }

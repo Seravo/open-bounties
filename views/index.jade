@@ -1,14 +1,13 @@
 extends layout
 block content
   body
-  if (!req.isAuthenticated())  
-   .jumbotron
-    h1 Make your software even better!
-    p.lead
-     | Enjoy software that you use.
-    a.btn.btn-large.btn-success(href='/signup') Join us
-   hr 
-  .content
+   if (!req.isAuthenticated())  
+    .jumbotron
+     h1 Make your software even better!
+     p.lead
+      | Enjoy software that you use.
+     a.btn.btn-large.btn-success(href='/signup') Join us
+     hr 
    .leftSide
     h4.text-info Most recent bounties :
     each bug in req.bugs
@@ -70,18 +69,21 @@ block content
    .rightSide
      h4.text-info Info
      p There are 
-      b=req.count 
+      b=req.count
       |  bounties in the system.
   .footer
    hr
    p © The Wanderers 2013
 
+  script 
+    $('.bountyBox').hover(function() {
+       $(this).css( "background-color", "#9AFF9A" );
+        //alert(this.value);
+      })
 
 
 
 
-         //- each bug in bugs
-         //-  p=bug.bugName
 
 
 

@@ -1,15 +1,14 @@
  body {
-      padding-top: 00px;
-      padding-bottom: 000px;
-      width: 80%;
-      margin-left: 10%;
-      background-color: #F5F5F5;
+      width: 100%;
+      /*margin-left: 5%;*/
+      /*background-color: #F5F5F5;*/
+      background-image:url('/pictures/squairy_light.png');
       font-family: Verdana, Tahoma, arial, geneva, Helvetica, sans-serif;
       font-size: 11px;
       }
       /* Custom container */
       .container-narrow {
-      margin: 0 auto;
+      /*margin: 0 auto;*/
       max-width: 100%;
       }
       .container-narrow > hr {
@@ -18,7 +17,8 @@
       /* Main marketing message and sign up button */
       .jumbotron {
       margin: 60px 0;
-      text-align: center;
+      /*padding: 10px;*/
+       text-align: center;
       }
       .jumbotron h1 {
       font-size: 72px;
@@ -30,11 +30,38 @@
       }
       /* Supporting marketing content */
       .marketing {
-      margin: 60px 0;
+      /*margin: 60px 0;*/
       }
       .marketing p + h4 {
-      margin-top: 28px;
+      /*margin-top: 28px;*/
       }
+
+.menu{
+   width: 100%;
+   /*margin-top: -70px;*/
+   /*height: 0px;*/
+   background-image:url('/pictures/dark_dotted2.png');
+   /*background-color: white;*/
+   /*position: fixed;*/
+}
+.content  {
+  margin-left: 10%;
+  width: 80%;
+}
+
+
+.shadow {
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+.text
+{
+text-shadow: 0 0 10px #c61a1a;
+font-size:20px;
+color:#F5F5F5;
+}
 
 /*a {
   color: #00B7FF;
@@ -124,7 +151,7 @@ p {margin-left:20px;}*/
 .bountyBox{
  
   min-height: 120px;
-  /*background-color: #FAEBD7;*/
+  background-color: #F0FFF0;
   border: 1px solid #e3e3e3;
   padding: 10px;
   margin-top: 5px;
@@ -141,13 +168,14 @@ p {margin-left:20px;}*/
 
 .leftSide{
   display: inline-block;
+  margin-left: 2.5%;
   float: left;
   width: 35%;
 }
 
 .centreSide{
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 1%;
   width: 35%;
 }
 
@@ -155,17 +183,15 @@ p {margin-left:20px;}*/
 .rightSide{
   width: 20%;
   float: right;
+  margin-right: 2.5%;
   display: inline-block;
-  margin-left: 5%;
+  position: relative;
+/*  padding: 5px;*/
 }
 
 .verticalLine {
     margin-right: 100px; 
     border-left:thick solid #ff0000;
-}
-
-.content{
-
 }
 
 .bottomContent{
@@ -185,20 +211,4 @@ p.block {
     width: 30px;
 /*    white-space: nowrap;
     word-wrap: break-word;*/
-}
-
-.cssmenu {
-
-        background-color:rgba(245, 245, 220,1);
-        position: fixed;
-        padding: 0px;
-
-        /*height: 50px;*/
-        /*background-color: white;*/
-        width: 80%;
-        /*display: inline-block;*/
-        /*margin-left: 50%;*/
-        /*opacity: 0.2;*/
-        /*width: 800px*/
-        
 }
