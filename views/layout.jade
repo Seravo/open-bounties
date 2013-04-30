@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='../stylesheets/style.css')
     script(src='../javascripts/jquery.js')    
     script(src='../javascripts/jquery.validate.min.js')
-    script(src='../javascripts/jquery-latest.js')
+    //- script(src='../javascripts/jquery-latest.js')
     script(src='../javascripts/jquery.tablesorter.js')
     script(src='../javascripts/myjs.js')   
     script(src='../javascripts/bootstrap-modal.js')
@@ -26,10 +26,10 @@ html
         a(href='/logout') Logout
      else
       li
-        a(href='/signup') Sign up
+       a(href='/signup') Sign up
       li(style="margin-top: 7px; color: white;") or
       li
-       a(href="#logIn", data-toggle='modal') Login 
+       a(href="#login", data-toggle='modal') Login 
      p.text-right.text(style="padding:5px 5px 0px 0px;") OpenBounty.org 
    hr  
    .content   
@@ -38,7 +38,7 @@ html
     include footer
 
  form(action='/login', method='post')
-  #logIn.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true') 
+  #login.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true') 
     .modal-header
      button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
      h3#myModalLabel Log in
@@ -57,7 +57,3 @@ html
      img(src="pictures/grey_twitter_stamp.png")
     .modal-footer
      button.btn.btn-primary log in
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f42fd04d65186879cf7b29a2d47fbf8aeb15573

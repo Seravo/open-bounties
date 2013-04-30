@@ -35,7 +35,7 @@ exports.index = function(req, res) {
 
     var bug = models.Bug.findOne({
       _id: req.bug.id,
-    });      
+    }).populate('user');      
 
     bug.update({
       bountyStatus: 'OPEN',
