@@ -43,6 +43,6 @@ setInterval(function() {
   })
   console.log(Date())
 
-}, 5000)
+}, 43200000)
 }
 //43200000
