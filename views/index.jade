@@ -31,9 +31,6 @@ block content
        p 
          b Tags: 
          | C++ , java bla bla    
-         //- p
-         //-   b Description: 
-         //-   = bug.description        
        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
@@ -60,12 +57,9 @@ block content
         span.badge.badge-warning  
          =bug.totalSum 
          | €  
-       //- p
-       //-   b Description: 
-       //-   = bug.description      
        p 
          b Tags: 
-         | C++ , java bla bla     
+         | C++ , java bla bla  
        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
@@ -73,41 +67,11 @@ block content
         a(href="/user/" + bug.author._id) 
          =bug.author.username
        img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
-    //- .pagination.pagination-left
-    //- ul
-    //-  - if (req.exppage > 0) {
-    //-   li
-    //-    a(href="?exppage=0") First 
-    //-   li
-    //-    a(href="?exppage=" + (req.exppage - 1)) Previous page
-    //-    - }
-    //-  - if (req.exppage<req.explastPage) {     
-    //-   li
-    //-    a(href="?exppage=" + (req.exppage + 1)) Next page
-    //-   li
-    //-    a(href="?exppage=" + req.explastPage) Last  
-    //-   - } 
    .rightSide
      h4.text-info Info
      p There are 
       b=req.count 
       |  bounties in the system.
-
-   .bottomContent
-    .pagination.pagination-centered
-     ul
-      - if (page > 0) {
-       li
-        a(href="?page=0") First 
-       li
-        a(href="?page=" + (page - 1)) Previous page
-        - }
-      - if (page<lastPage) {     
-       li
-        a(href="?page=" + (page + 1)) Next page
-       li
-        a(href="?page=" + lastPage) Last  
-       - }     
   .footer
    hr
    p © The Wanderers 2013
