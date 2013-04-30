@@ -10,7 +10,7 @@ exports.index = function(req, res) {
 /*
    ********DO NOT DELETE THIS!********************
 
-  if (req.bug.bountyStatus === 'In Progress') {
+  if (req.bug.bountyStatus === 'IN PROGRESS') {
     var myDeadline = moment(req.bug.deadline);
     var diff = myDeadline.diff(moment(), 'minutes');
     req.diff = diff;
@@ -31,7 +31,7 @@ exports.index = function(req, res) {
   if (myDeadline.diff(moment()) < 0) {
     // console.log('foo')
     // console.log(req.bug.bountyStatus)
-    // req.bug.bountyStatus = 'Open';
+    // req.bug.bountyStatus = 'OPEN';
 
     var bug = models.Bug.findOne({
       _id: req.bug.id,
@@ -160,7 +160,7 @@ exports.claim = function(req, res) {
   });
 
   bug.update({
-    bountyStatus: 'In Progress',
+    bountyStatus: 'IN PROGRESS',
     claimer: myClaimer,
     deadline: myDeadline.format()
   }, function(err) {

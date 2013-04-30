@@ -8,9 +8,7 @@ var express = require('express'),
   FacebookStrategy = require('passport-facebook').Strategy,
   GoogleStrategy = require('passport-google').Strategy,
   TwitterStrategy = require('passport-twitter').Strategy,
-  models = require('./dbModels'),
-  cheerio = require('cheerio'),
-  request = require('request'),
+  cron = require('./cron')
   passwordHash = require('password-hash');
 var FACEBOOK_APP_ID = "449837621775038"
 var FACEBOOK_APP_SECRET = "e98541f9a4c1f1e7eee6fe6be81000b9";
@@ -193,45 +191,4 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
-setInterval(function() {
-  models.Bug.find({}).populate('author', 'username').exec(function(err, bugs) {
-    bugs.forEach(function(b) {
-      request(b.link, function(err, resp, body) {
-        $ = cheerio.load(body);
-        var scrapedStatus = $('#static_bug_status'); //use CSS selector here
-        var scrapedAssignee = $('.fn');
-        /*console.log('bugStatus:' + b.bugStatus)
-        console.log('scrapedStatus:' + ($(scrapedStatus).text()))*/
-        if (($(scrapedStatus).text()) != b.bugStatus) {
-
-          if (($(scrapedStatus).text()).substring(0, 4) === 'ASSI' 
-            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
-            b.bugStatus = $(scrapedStatus).text()
-            b.bountyStatus = 'IN PROGRESS'
-          }
-
-          if (($(scrapedStatus).text()).trim().replace(/\s{2,}/g, ' ') === 'RESOLVED FIXED' 
-            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
-            b.bugStatus = 'RESOLVED FIXED'
-            b.bountyStatus = 'FIXED'
-          }
-
-          if (($(scrapedStatus).text()).trim().replace(/\s{2,}/g, ' ') === 'VERIFIED FIXED' 
-            && ($(scrapedAssignee).text()).indexOf('openbounties.org') !== -1) {
-            b.bugStatus = 'VERIFIED FIXED'
-            b.bountyStatus = 'RELEASED'
-          }
-          b.save(function(err) {
-            if (err) {
-              console.log('statusCheck fail')
-            }
-          })
-        } else {
-          console.log('statusCheck complete, no changes made')
-        }
-      });
-    });
-  })
-  console.log(Date())
-
-}, 43200000)
+cron.setTime()

@@ -19,4 +19,4 @@ $("tr").click(function() {
 
 
 // $('#claimButton').attr('disabled', true)
-// if (req.bug.bountyStatus === 'In Progress') alert('asdsa')
+// if (req.bug.bountyStatus === 'IN PROGRESS') alert('asdsa')
