@@ -1,15 +1,14 @@
  body {
-      padding-top: 00px;
-      padding-bottom: 000px;
-      width: 80%;
-      margin-left: 10%;
-      background-color: #F5F5F5;
+      width: 100%;
+      /*margin-left: 5%;*/
+      /*background-color: #F5F5F5;*/
+      background-image:url('/pictures/squairy_light.png');
       font-family: Verdana, Tahoma, arial, geneva, Helvetica, sans-serif;
       font-size: 11px;
       }
       /* Custom container */
       .container-narrow {
-      margin: 0 auto;
+      /*margin: 0 auto;*/
       max-width: 100%;
       }
       .container-narrow > hr {
@@ -18,7 +17,8 @@
       /* Main marketing message and sign up button */
       .jumbotron {
       margin: 60px 0;
-      text-align: center;
+      /*padding: 10px;*/
+       text-align: center;
       }
       .jumbotron h1 {
       font-size: 72px;
@@ -30,11 +30,38 @@
       }
       /* Supporting marketing content */
       .marketing {
-      margin: 60px 0;
+      /*margin: 60px 0;*/
       }
       .marketing p + h4 {
-      margin-top: 28px;
+      /*margin-top: 28px;*/
       }
+
+.menu{
+   width: 100%;
+   /*margin-top: -70px;*/
+   /*height: 0px;*/
+   background-image:url('/pictures/dark_dotted2.png');
+   /*background-color: white;*/
+   /*position: fixed;*/
+}
+.content  {
+  margin-left: 10%;
+  width: 80%;
+}
+
+
+.shadow {
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+.text
+{
+text-shadow: 0 0 10px #c61a1a;
+font-size:20px;
+color:#F5F5F5;
+}
 
 /*a {
   color: #00B7FF;
@@ -113,8 +140,9 @@ p {margin-left:20px;}*/
 .authorInfo{
    float: right;
    /*background-color: yellow;*/
-   display:inline-block;
-   /*width: 300px;*/
+   /*display:inline-block;*/
+   width: 100px;
+   word-wrap: break-word;
 }
 
 
@@ -122,30 +150,13 @@ p {margin-left:20px;}*/
   /*background-color: pink;*/
   display:inline-block;
   width: 250px;
+  word-wrap: break-word;
 }
 
 .bountyBox{
  
   min-height: 120px;
-  /*background-color: #FAEBD7;*/
-  border: 1px solid #e3e3e3;
-  padding: 10px;
-  margin-top: 5px;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-
-.bountyBoxRight{
- 
-  min-height: 120px;
-  /*background-color: pink;*/
+  background-color: #F0FFF0;
   border: 1px solid #e3e3e3;
   padding: 10px;
   margin-top: 5px;
@@ -162,13 +173,14 @@ p {margin-left:20px;}*/
 
 .leftSide{
   display: inline-block;
+  margin-left: 2.5%;
   float: left;
   width: 35%;
 }
 
 .centreSide{
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 1%;
   width: 35%;
 }
 
@@ -176,17 +188,15 @@ p {margin-left:20px;}*/
 .rightSide{
   width: 20%;
   float: right;
+  margin-right: 2.5%;
   display: inline-block;
-  margin-left: 5%;
+  position: relative;
+/*  padding: 5px;*/
 }
 
 .verticalLine {
     margin-right: 100px; 
     border-left:thick solid #ff0000;
-}
-
-.content{
-
 }
 
 .bottomContent{
@@ -198,7 +208,8 @@ p {margin-left:20px;}*/
 }
 
 .footer { 
-
+  padding-top: 40px;
+  clear: both;
 } 
 
 p.block {
@@ -206,6 +217,7 @@ p.block {
 /*    white-space: nowrap;
     word-wrap: break-word;*/
 }
+<<<<<<< HEAD
 
 .cssmenu {
 
@@ -261,3 +273,5 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
 }
+=======
+>>>>>>> 5f42fd04d65186879cf7b29a2d47fbf8aeb15573

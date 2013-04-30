@@ -1,14 +1,13 @@
 extends layout
 block content
   body
-  if (!req.isAuthenticated())  
-   .jumbotron
-    h1 Make your software even better!
-    p.lead
-     | Enjoy software that you use.
-    a.btn.btn-large.btn-success(href='/signup') Join us
-   hr 
-  .content
+   if (!req.isAuthenticated())  
+    .jumbotron
+     h1 Make your software even better!
+     p.lead
+      | Enjoy software that you use.
+     a.btn.btn-large.btn-success(href='/signup') Join us
+     hr 
    .leftSide
     h4.text-info Most recent bounties :
     each bug in req.bugs
@@ -22,16 +21,16 @@ block content
          when 'OPEN'  
           span.label.label-info(style="margin-right:5px")
            = bug.bountyStatus 
-         when 'In Progress' 
+         when 'IN PROGRESS' 
           span.label.label-important(style="margin-right:5px")
            = bug.bountyStatus  
         span.badge.badge-warning  
          =bug.totalSum 
          | €  
-       p
-         b Description: 
-         = bug.description        
-        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       p 
+         b Tags: 
+         | C++ , java bla bla    
+       a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
         b Posted by:   
@@ -41,7 +40,7 @@ block content
    .centreSide
     h4.text-info Most expensive and open bounties :
     each bug in req.expbugs
-     .bountyBoxRight
+     .bountyBox
       .bountyInfo 
        p 
         b Title: 
@@ -51,18 +50,15 @@ block content
          when 'OPEN'  
           span.label.label-info(style="margin-right:5px")
            = bug.bountyStatus 
-         when 'In Progress' 
+         when 'IN PROGRESS' 
           span.label.label-important(style="margin-right:5px")
            = bug.bountyStatus  
         span.badge.badge-warning  
          =bug.totalSum 
          | €  
-       p
-         b Description: 
-         = bug.description      
        p 
          b Tags: 
-         | C++ , java bla bla     
+         | C++ , java bla bla  
        a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
@@ -70,51 +66,24 @@ block content
         a(href="/user/" + bug.author._id) 
          =bug.author.username
        img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
-    //- .pagination.pagination-left
-    //- ul
-    //-  - if (req.exppage > 0) {
-    //-   li
-    //-    a(href="?exppage=0") First 
-    //-   li
-    //-    a(href="?exppage=" + (req.exppage - 1)) Previous page
-    //-    - }
-    //-  - if (req.exppage<req.explastPage) {     
-    //-   li
-    //-    a(href="?exppage=" + (req.exppage + 1)) Next page
-    //-   li
-    //-    a(href="?exppage=" + req.explastPage) Last  
-    //-   - } 
    .rightSide
      h4.text-info Info
      p There are 
-      b=req.count 
+      b=req.count
       |  bounties in the system.
-
-   .bottomContent
-    .pagination.pagination-centered
-     ul
-      - if (page > 0) {
-       li
-        a(href="?page=0") First 
-       li
-        a(href="?page=" + (page - 1)) Previous page
-        - }
-      - if (page<lastPage) {     
-       li
-        a(href="?page=" + (page + 1)) Next page
-       li
-        a(href="?page=" + lastPage) Last  
-       - }     
   .footer
    hr
    p © The Wanderers 2013
 
+  script 
+    $('.bountyBox').hover(function() {
+       $(this).css( "background-color", "#9AFF9A" );
+        //alert(this.value);
+      })
 
 
 
 
-         //- each bug in bugs
-         //-  p=bug.bugName
 
 
 

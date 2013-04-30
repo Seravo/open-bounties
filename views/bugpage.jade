@@ -9,7 +9,7 @@ block content
      a(href="#logIn", data-toggle='modal') login 
      |  . But you still can add more money to support!
   else
-   if (req.bug.bountyStatus === 'In Progress')  
+   if (req.bug.bountyStatus === 'IN PROGRESS')  
     .alert.alert-error
      button.close(type='button', data-dismiss='alert') ×
      h4 This bounty in progress. 
@@ -30,7 +30,7 @@ block content
          when 'OPEN'  
           span.label.label-info(style="margin-left:5px;")
            = req.bug.bountyStatus 
-         when 'In Progress' 
+         when 'IN PROGRESS' 
           span.label.label-important(style="margin-left:5px;")
            = req.bug.bountyStatus  
         span.badge.badge-warning(style="margin-left:5px;") 
@@ -54,7 +54,7 @@ block content
     b Link:  
       a(href= req.bug.link)
        =req.bug.link
-  if (req.bug.bountyStatus === 'In Progress')  
+  if (req.bug.bountyStatus === 'IN PROGRESS')  
    p 
     b Claimed by 
     a(href='/user/' + req.bug.claimer.id)
