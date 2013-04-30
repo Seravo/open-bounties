@@ -6,11 +6,13 @@ html
     link(rel='stylesheet', href='../stylesheets/style.css')
     script(src='../javascripts/jquery.js')    
     script(src='../javascripts/jquery.validate.min.js')
+    script(src='../javascripts/jquery-latest.js')
+    script(src='../javascripts/jquery.tablesorter.js')
     script(src='../javascripts/myjs.js')   
     script(src='../javascripts/bootstrap-modal.js')
   body
-    hr
-    ul.nav.nav-pills.pull-left
+   .menu
+    ul.nav.nav-pills
      li
       a(href='/') Home
      li
@@ -25,12 +27,12 @@ html
      else
       li
         a(href='/signup') Sign up
-      li(style="margin-top: 7px") or
+      li(style="margin-top: 7px; color: white;") or
       li
-       a(href="#logIn", data-toggle='modal') Login
-    h3.muted(style="margin-left: 75%") OpenBounty.org   
-    hr 
-   block content
+       a(href="#logIn", data-toggle='modal') Login 
+     p.text-right.text(style="padding:5px 5px 0px 0px;") OpenBounty.org 
+   .content   
+    block content
 
  form(action='/login', method='post')
   #logIn.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true') 
@@ -52,5 +54,4 @@ html
      img(src="pictures/grey_twitter_stamp.png")
     .modal-footer
      button.btn.btn-primary log in
-
 

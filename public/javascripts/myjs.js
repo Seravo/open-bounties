@@ -57,7 +57,7 @@ question = null;
 window.onresize = setLayerPosition;
 
 $(document).ready(function(){
-
+   $("#myTable").tablesorter(); 
   $('#payment-form').validate({
   rules: {
       sum: {
@@ -89,3 +89,4 @@ $(document).ready(function(){
 
 });
 })
+

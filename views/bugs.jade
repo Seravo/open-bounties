@@ -2,8 +2,8 @@ extends layout
 block content
   body   
    h2.form-signin-heading All Bounties
-   table.table.table-bordered
-    thead 
+   table#myTable.tablesorter.table.table-bordered
+    thead
      tr
       th Bonty  name
       th Description
@@ -13,21 +13,21 @@ block content
       th(style= "display:none") id
       th Created at
     tbody
-    each bug in req.bugs 
-     tr
-      td 
-       a(href="/bug/" + bug._id)
-        = bug.bugName
-      td
-       p
-        = bug.description
-      td
+     each bug in req.bugs 
+      tr
+       td 
+        a(href="/bug/" + bug._id)
+         = bug.bugName
+       td
+        p
+         = bug.description
+       td
         a(href="/user/"+bug.author._id)=bug.author.username
-      td= bug.bountyStatus
-      td
+       td= bug.bountyStatus
+       td
         a(href=bug.link)=bug.link
-      td#rowId(style= "display:none")= bug.id
-      td=bug.ts.toDateString()
+       td#rowId(style= "display:none")= bug.id
+       td=bug.ts.toDateString()
    a.button.btn.btn-success(type='button', style='margin-bottom:5px;',href='/addBug' ) Add new
    //- form(action='/deleteBug', method='post')
    //-  input.idInput(type='hidden', name='myId')
