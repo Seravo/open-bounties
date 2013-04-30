@@ -2,12 +2,19 @@ extends layout
 block content
   body
    if (!req.isAuthenticated())  
-    .jumbotron
+    .jumbotron.shadoweffect
      h1 Make your software even better!
      p.lead
       | Enjoy software that you use.
      a.btn.btn-large.btn-success(href='/signup') Join us
-     hr 
+    hr
+   else
+    .jumbotron.shadoweffect
+     h1 Hi!
+     p.lead
+      | Claim yout first bug!
+     a.btn.btn-large.btn-success(href='/signup') Join us
+    hr  
    .leftSide
     h4.text-info Most recent bounties :
     each bug in req.bugs
@@ -71,15 +78,16 @@ block content
      p There are 
       b=req.count
       |  bounties in the system.
-  .footer
-   hr
-   p © The Wanderers 2013
+
 
   script 
     $('.bountyBox').hover(function() {
        $(this).css( "background-color", "#9AFF9A" );
         //alert(this.value);
-      })
+      },
+      function () {
+    $(this).css( "background-color", "#F0FFF0" );
+    })
 
 
 

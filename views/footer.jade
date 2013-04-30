@@ -1,0 +1,18 @@
+ul.nav.nav-pills
+ li
+  a(href='/') Home
+ li
+  a(href='/users') Users
+ li
+  a(href='/bugs') Bounties
+ if (req.isAuthenticated())
+  li
+    a(href='/user/' + req.user.id) Profile
+  li
+    a(href='/logout') Logout
+ else
+  li
+    a(href='/signup') Sign up
+  li(style="margin-top: 7px; color: white;") or
+  li
+   a(href="#logIn", data-toggle='modal') Login 

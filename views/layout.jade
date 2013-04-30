@@ -29,8 +29,11 @@ html
       li
        a(href="#logIn", data-toggle='modal') Login 
      p.text-right.text(style="padding:5px 5px 0px 0px;") OpenBounty.org 
+   hr  
    .content   
     block content
+   .footer
+    include footer
 
  form(action='/login', method='post')
   #logIn.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true') 
