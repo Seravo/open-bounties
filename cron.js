@@ -1,5 +1,6 @@
 cheerio = require('cheerio'),
 request = require('request'),
+moment = require('moment'),
 models = require('./dbModels'),
 exports.setTime = function(){
 setInterval(function() {
@@ -45,4 +46,48 @@ setInterval(function() {
 
 }, 43200000)
 }
+
+
+exports.checkBountiesDeadlines = function(){
+setInterval(function() {
+  models.Bug.find({bountyStatus: "IN PROGRESS"}).exec(function(err, bugs) {
+    bugs.forEach(function(b) {
+
+        var myDeadline = moment(b.deadline);
+        if (myDeadline.diff(moment()) < 0) {
+          console.log("UPDATING!")
+
+          b.bountyStatus = "OPEN";
+          b.deadline = moment().format();
+          // b.update({
+          //   bountyStatus: 'OPEN',
+          //   deadline: moment().format()
+
+          // });
+          b.save(function(err) {
+            if (err) {
+              console.log('deadline fails')
+            }
+          })
+
+          console.log("DONE!")
+
+        }
+        else{
+          var diff = myDeadline.diff(moment(), 'seconds');
+          console.log(diff);
+          console.log(b.bugName);
+          console.log(b.deadline);
+         
+        }
+    });
+  })
+
+
+
+ }, 1110)
+}
+
+
+
 //43200000
