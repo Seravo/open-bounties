@@ -2,32 +2,42 @@ extends layout
 block content
   body   
    h2.form-signin-heading All Bounties
-   table#myTable.tablesorter.table.table-bordered
+   //-table#myTable.tablesorter.table.table-bordered
+   table.table.table-bordered.sortable
     thead
      tr
-      th Bonty  name
-      th Description
-      th Author
-      th Status
-      th Link
+      th(style="width: 16%")
+       a.ell(href="#") Bounty  name
+      th(style="width: 16%")
+        a.ell(href="#") Description
+      th(style="width: 16%")
+        a.ell(href="#") Author
+      th(style="width: 8%")
+        a.ell(href="#") Status
+      th(style="width: 24%")
+        a.ell(href="#") Link
       th(style= "display:none") id
-      th Created at
+      th(style="width: 16%")
+        a.ell(href="#") Created at
     tbody
-     each bug in req.bugs 
-      tr
-       td 
-        a(href="/bug/" + bug._id)
-         = bug.bugName
-       td
-        p
-         = bug.description
-       td
-        a(href="/user/"+bug.author._id)=bug.author.username
-       td= bug.bountyStatus
-       td
-        a(href=bug.link)=bug.link
-       td#rowId(style= "display:none")= bug.id
-       td=bug.ts.toDateString()
+    each bug in req.bugs 
+     tr
+        td
+         a.ell(href="/bug/" + bug._id)= bug.bugName
+        td
+         p.ell
+          = bug.description
+        td
+          a.ell(href="/user/"+bug.author._id)=bug.author.username
+        td
+          p.ell
+            = bug.bountyStatus
+        td
+          a.ell(href=bug.link)=bug.link
+        td#rowId(style= "display:none")= bug.id
+        td
+          p.ell
+            =bug.ts.toDateString()
    a.button.btn.btn-success(type='button', style='margin-bottom:5px;',href='/addBug' ) Add new
    form(action='/deleteBug', method='post')
     input.idInput(type='hidden', name='myId')
