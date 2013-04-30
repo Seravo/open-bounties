@@ -71,7 +71,8 @@ block content
   hr 
   p Comments: 
    b= req.bug.comments.length    
-  each comment in req.bug.comments  
+  each comment in req.bug.comments
+   img.image(alt="Picture", width="50", height="50" ,src= req.user.imagePath)
    div.commentbox
     p= comment.body
    div.commentfooter.shadow
