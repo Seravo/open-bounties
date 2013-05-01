@@ -3,7 +3,7 @@ block content
   body   
   if (!req.isAuthenticated())
    .alert.alert-error
-    button.close(type='button', data-dismiss='alert') ×
+    //- button.close(type='button', data-dismiss='alert') ×
     h4 Notice!
     p In order to claim this bounty and try to fix it, you have to 
      a(href="#logIn", data-toggle='modal') login 
@@ -11,18 +11,18 @@ block content
   else
    if (req.bug.bountyStatus === 'IN PROGRESS')  
     .alert.alert-error
-     button.close(type='button', data-dismiss='alert') ×
+     //- button.close(type='button', data-dismiss='alert') ×
      h4 This bounty in progress. 
      p 
       = req.bug.claimer.username   
       | &nbsp;is working on a solution!
    else 
      .alert.alert-info
-      button.close(type='button', data-dismiss='alert') ×
+      //- button.close(type='button', data-dismiss='alert') ×
       h4 Open Bounty!
       p This bounty is opened and you might claim it ;)    
 
-  .page-header
+   .page-header
     h2.form-signin-heading Bonty page     
         small 
          =req.bug.bugName
@@ -39,48 +39,48 @@ block content
         - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
           a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
            button.btn.btn-mini.btn-primary Claim bounty!
-        - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
           a(href="#paymentWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
-           button.btn.btn-mini.btn-success Add money
-   p 
-    b Posted by:  
-      a(href='/user/' + req.bug.author.id)
-       =req.bug.author.username
-   p 
-    b Full description: 
-    =req.bug.description   
-   p 
-    b Link:  
+           button.btn.btn-mini.btn-success Add money     
+    hr
+    p
+     b Posted by:  
+       a(href='/user/' + req.bug.author.id)
+        =req.bug.author.username
+    p 
+     b Full description: 
+     =req.bug.description   
+    p  
+     b Link:  
       a(href= req.bug.link)
        =req.bug.link
-  if (req.bug.bountyStatus === 'IN PROGRESS')  
-   p 
-    b Claimed by 
-    a(href='/user/' + req.bug.claimer.id)
-      =req.bug.claimer.username   
-   //- p 
-   //-  b Deadline: 
-   //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
-   p 
-    b Time left: 
-    = (req.diff - req.diff % 60) / 60
-      | &nbsp;hours     
-    = req.diff % 60
-      | &nbsp;minutes       
-  hr 
-  p Comments: 
-   b= req.bug.comments.length    
-  each comment in req.bug.comments
-   //- img.image(alt="Picture", width="50", height="50" ,src= comment.user.imagePath)
-   div.commentbox
-    p= comment.body
-   div.commentfooter.shadow
-    p
-    b When: 
-    =comment.createdAt.toDateString()
-    b  Posted by 
-      a(href='/user/' + comment.user)
-       =comment.username       
+    if (req.bug.bountyStatus === 'IN PROGRESS')  
+     p 
+      b Claimed by 
+      a(href='/user/' + req.bug.claimer.id)
+        =req.bug.claimer.username   
+     //- p 
+     //-  b Deadline: 
+     //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
+     p 
+      b Time left: 
+      = (req.diff - req.diff % 60) / 60
+        | &nbsp;hours     
+      = req.diff % 60
+        | &nbsp;minutes       
+    hr 
+    p Comments: 
+     b= req.bug.comments.length    
+    each comment in req.bug.comments
+     //- img.image(alt="Picture", width="50", height="50" ,src= comment.user.imagePath)
+     div.commentbox
+      p= comment.body
+     div.commentfooter.shadow
+      p
+      b When: 
+      =comment.createdAt.toDateString()
+      b  Posted by 
+        a(href='/user/' + comment.user)
+         =comment.username       
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br

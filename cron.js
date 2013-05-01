@@ -75,9 +75,9 @@ setInterval(function() {
         }
         else{
           var diff = myDeadline.diff(moment(), 'seconds');
-          console.log(diff);
-          console.log(b.bugName);
-          console.log(b.deadline);
+          // console.log(diff);
+          // console.log(b.bugName);
+          // console.log(b.deadline);
          
         }
     });
