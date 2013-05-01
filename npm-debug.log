@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'mongoose-findorcreate' ]
+2 info using npm@1.2.17
+3 info using node@v0.11.1-pre
+4 verbose read json /home/egor/Github/freezing-ninja/package.json
+5 error Error: Invalid name: "Open bounties"
+5 error     at validName (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:550:40)
+5 error     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:321:27)
+5 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:139:33
+5 error     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:48:11)
+5 error     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:251:40
+5 error     at fs.js:253:14
+5 error     at Object.oncomplete (fs.js:94:15)
+6 error If you need help, you may report this log at:
+6 error     <http://github.com/isaacs/npm/issues>
+6 error or email it to:
+6 error     <npm-@googlegroups.com>
+7 error System Linux 3.5.0-17-generic
+8 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "mongoose-findorcreate"
+9 error cwd /home/egor/Github/freezing-ninja
+10 error node -v v0.11.1-pre
+11 error npm -v 1.2.17
+12 verbose exit [ 1, true ]

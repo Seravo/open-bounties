@@ -84,7 +84,7 @@ function(username, password, done) {
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
+  callbackURL: "http://haaga-helia.seravo.fi:3001/auth/facebook/callback"
 },
 
 function(accessToken, refreshToken, profile, done) {

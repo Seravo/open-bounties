@@ -3,6 +3,7 @@ var Schema = mongoose.Schema,
 	authTypes = ['facebook']
 var Schema = mongoose.Schema
 var cheerio = require('cheerio');
+var findOrCreate = require('mongoose-findorcreate');
 
 /*create 2 schemas*/
 var BugSchema = new Schema({
@@ -116,6 +117,8 @@ BugSchema.methods = {
 		console.log('Document Is Successfully Added')
 	}
 }
+
+UserSchema.plugin(findOrCreate);
 /*Compiling models*/
 var Bug = mongoose.model('Bug', BugSchema);
 var User = mongoose.model('User', UserSchema);
