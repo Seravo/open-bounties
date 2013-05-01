@@ -2,7 +2,8 @@
       width: 100%;
       /*margin-left: 5%;*/
       /*background-color: #F5F5F5;*/
-      background-image:url('/pictures/squairy_light.png');
+      /*background-image:url('/pictures/squairy_light.png');*/
+      background-image:url('/pictures/p5.png');
       font-family: Verdana, Tahoma, arial, geneva, Helvetica, sans-serif;
       font-size: 11px;
       /*height: 1300px;*/
@@ -21,6 +22,8 @@
       .jumbotron {
       margin: 60px 0;
       padding: 10px;
+       /*background-image:url('/pictures/grey_wash_wall.png');*/
+      background-color: rgba(132, 112, 255, 0.2);
        text-align: center;
       }
       .jumbotron h1 {
@@ -42,7 +45,7 @@
 .menu{
    width: 100%;
    height: 30px;
-   margin-top: -20px;
+   /*margin-top: -20px;*/
    background-image:url('/pictures/dark_dotted2.png');
    /*background-color: white;*/
    position: fixed;
@@ -68,7 +71,7 @@
   clear:both;
   background-color: white;
   /*height: 100px;*/
-  background-image:url('/pictures/dark_dotted2.png');
+  background-image:url('/pictures/p5.png');
 } 
 
 
@@ -178,7 +181,7 @@ p {margin-left:20px;}*/
 .bountyBox{
  
   min-height: 120px;
-  background-color: #F0FFF0;
+  background-color: rgba(132, 112, 255, 0.2);
   border: 1px solid #e3e3e3;
   padding: 10px;
   margin-top: 5px;

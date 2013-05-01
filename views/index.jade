@@ -16,7 +16,7 @@ block content
      a.btn.btn-large.btn-success(href='/signup') Join us
     hr  
    .leftSide
-    h4.text-info Most recent bounties :
+    h4(align="center") Most recent bounties
     each bug in req.bugs
      .bountyBox
       .bountyInfo 
@@ -37,7 +37,7 @@ block content
        p 
          b Tags: 
          | C++ , java bla bla    
-       a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       a.btn.btn-info.btn-mini(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
         b Posted by:   
@@ -45,7 +45,7 @@ block content
          =bug.author.username
        img.img-rounded(style='width:70px; height:70px;float:right', src=bug.author.imagePath) 
    .centreSide
-    h4.text-info Most expensive and open bounties :
+    h4(align="center") Most expensive and open bounties
     each bug in req.expbugs
      .bountyBox
       .bountyInfo 
@@ -66,7 +66,7 @@ block content
        p 
          b Tags: 
          | C++ , java bla bla  
-       a.btn.btn-info(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       a.btn.btn-info.btn-mini(style="margin-top:50px", href="/bug/" + bug._id) See bug
       .authorInfo
        p
         b Posted by:   
@@ -74,19 +74,23 @@ block content
          =bug.author.username
        img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
    .rightSide
-     h4.text-info Info
+     h4 Info
      p There are 
       b=req.count
       |  bounties in the system.
+     h4 Social
+     iframe(src='https://www.facebook.com/plugins/like.php?href=http://haaga-helia.seravo.fi:3001/', scrolling='no', frameborder='0', style='border: none; width: 350px; height: 80px;')
+  
+
 
 
   script 
     $('.bountyBox').hover(function() {
-       $(this).css( "background-color", "#9AFF9A" );
+       $(this).css( "background-color", "rgba(0, 250, 154, 0.2)" );
         //alert(this.value);
       },
       function () {
-    $(this).css( "background-color", "#F0FFF0" );
+    $(this).css( "background-color", "rgba(132, 112, 255, 0.2)" );
     })
 
 
