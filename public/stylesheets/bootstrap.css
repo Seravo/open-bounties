@@ -4082,10 +4082,10 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-pills > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+/*  padding-top: 8px;
+  padding-bottom: 8px;*/
+  margin-top: 10px;
+  margin-bottom: 10px;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -4094,7 +4094,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
-  color: #ffffff;
+  /*color: #ffffff;*/
   background-color: #0088cc;
 }
 

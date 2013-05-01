@@ -36,19 +36,22 @@ block content
          | €  
        p 
          b Tags: 
-         | C++ , java bla bla    
-       a.btn.btn-info.btn-mini(style="margin-top:50px", href="/bug/" + bug._id) See bug
-      .authorInfo
-       p
-        b Posted by:   
+         | C++ , java bla bla   
+       a.btn.btn-info.btn-mini(style="", href="/bug/" + bug._id) Read more    
+      .authorInfo   
+       img.img-rounded(style='width:70px; height:70px;float:right', src=bug.author.imagePath)
+       p.ell(align="right") Author: 
         a(href="/user/" + bug.author._id) 
          =bug.author.username
-       img.img-rounded(style='width:70px; height:70px;float:right', src=bug.author.imagePath) 
    .centreSide
     h4(align="center") Most expensive and open bounties
     each bug in req.expbugs
      .bountyBox
       .bountyInfo 
+       //- p
+       //-  b Posted by:   
+       //-  a(href="/user/" + bug.author._id) 
+       //-   =bug.author.username
        p 
         b Title: 
         =  bug.bugName 
@@ -66,23 +69,22 @@ block content
        p 
          b Tags: 
          | C++ , java bla bla  
-       a.btn.btn-info.btn-mini(style="margin-top:50px", href="/bug/" + bug._id) See bug
+       a.btn.btn-info.btn-mini(style="", href="/bug/" + bug._id) Read more  
       .authorInfo
-       p
-        b Posted by:   
+       img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
+       p.ell(align="right") Author: 
         a(href="/user/" + bug.author._id) 
          =bug.author.username
-       img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
    .rightSide
      h4 Info
      p There are 
       b=req.count
       |  bounties in the system.
      h4 Social
+     a.twitter-share-button(href='https://twitter.com/share', data-text='OpenBounty.org - make your software even better!', data-via='EDanchenkov') Tweet
      iframe(src='https://www.facebook.com/plugins/like.php?href=http://haaga-helia.seravo.fi:3001/', scrolling='no', frameborder='0', style='border: none; width: 350px; height: 80px;')
+     
   
-
-
 
   script 
     $('.bountyBox').hover(function() {
@@ -93,6 +95,8 @@ block content
     $(this).css( "background-color", "rgba(132, 112, 255, 0.2)" );
     })
 
+  script
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
 
 

@@ -1,6 +1,26 @@
 extends layout
 block content
-  body   
+  body
+  //- #fb-root
+  //- script
+  //-     window.fbAsyncInit = function() {
+  //-     // init the FB JS SDK
+  //-     FB.init({
+  //-     appId      : '449837621775038',                        // App ID from the app dashboard
+  //-     channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+  //-     status     : true,                                 // Check Facebook Login status
+  //-     xfbml      : true                                  // Look for social plugins on the page
+  //-     });
+  //-     // Additional initialization code such as adding Event Listeners goes here
+  //-     };
+  //-     // Load the SDK asynchronously
+  //-     (function(d, s, id){
+  //-     var js, fjs = d.getElementsByTagName(s)[0];
+  //-     if (d.getElementById(id)) {return;}
+  //-     js = d.createElement(s); js.id = id;
+  //-     js.src = "//connect.facebook.net/en_US/all.js";
+  //-     fjs.parentNode.insertBefore(js, fjs);
+  //-     }(document, 'script', 'facebook-jssdk'));   
   if (!req.isAuthenticated())
    .alert.alert-error
     //- button.close(type='button', data-dismiss='alert') ×
@@ -23,12 +43,10 @@ block content
       p This bounty is opened and you might claim it ;)    
 
   .page-header
-   h2.form-signin-heading Bonty page     
-       small 
-        =req.bug.bugName
+   h2.form-signin-heading.text-info=req.bug.bugName     
        case req.bug.bountyStatus 
         when 'OPEN'  
-         span.label.label-info(style="margin-left:5px;")
+         span.label.label-success(style="margin-left:5px;")
           = req.bug.bountyStatus 
         when 'IN PROGRESS' 
          span.label.label-important(style="margin-left:5px;")
@@ -68,6 +86,7 @@ block content
      = req.diff % 60
        | &nbsp;minutes       
    hr 
+   //- .fb-comments(data-href=req.url, data-width='470', data-num-posts='10')
    p Comments: 
     b= req.bug.comments.length    
    each comment in req.bug.comments

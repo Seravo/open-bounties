@@ -37,7 +37,6 @@ html
    .content   
     block content
    .footer
-    hr
     include footer
 
  form(action='/login', method='post')
@@ -53,10 +52,10 @@ html
      input(type='checkbox', value='remember-me')
      | Remember me
     a(href="/auth/facebook")
-     img(src="pictures/facebook.png")
+     img(src="../pictures/facebook.png")
     a(href="/auth/google")
-     img(src="pictures/grey_google_stamp.png")
+     img(src="../pictures/grey_google_stamp.png")
     a(href="#")
-     img(src="pictures/grey_twitter_stamp.png")
+     img(src="../pictures/grey_twitter_stamp.png")
     .modal-footer
      button.btn.btn-primary log in
