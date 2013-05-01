@@ -78,14 +78,27 @@ exports.find = function(req, res, next, id) {
   })
 }
 
-exports.list = function(req, res) {
-  models.Bug.find({}).populate('author', 'username').exec(function(err, bugs) {
-    if (err) res.redirect('/')
-    req.bugs = bugs
-    //console.log('error ' + err, bugs); 
-    res.render('bugs', {
-      req: req
-    });
+exports.list = function(req, res, next) {
+    var perList = 10;
+    var page = req.query.page && parseInt(req.query.page, 10) || 0;
+    models.Bug.count(function (err, count){
+      if(err){
+        return next(err);
+      }
+         var lastPage = Math.ceil(count/perList)-1
+         models.Bug.find({})
+        .populate('author', 'username')
+        .skip(perList * page)
+            .limit(perList)
+            .sort({createdAt: 1})
+        .exec(function (err, bugs) {
+          if (err) res.redirect('/')
+          req.bugs = bugs;
+                res.render('bugs', {
+                  req: req, 
+                  page: page, 
+                  lastPage: lastPage});
+            });
   })
 }
 

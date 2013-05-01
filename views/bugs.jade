@@ -42,6 +42,20 @@ block content
    form(action='/deleteBug', method='post')
     input.idInput(type='hidden', name='myId')
     button.btn.btn-danger#deleteButton(type='submit', disabled) Delete
+   .pagination.pagination-right
+    ul
+      - if (page > 0) {
+      li
+        a(href="?page=0") First
+      li
+        a(href="?page=" + (page - 1)) <<
+      - }
+      - if (page<lastPage) {     
+      li
+        a(href="?page=" + (page + 1)) >>
+      li
+        a(href="?page=" + lastPage) Last  
+      - }    
 
 
    script(src='../javascripts/checkbox.js')   
