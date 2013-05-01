@@ -5,10 +5,10 @@ block content
       a.close(data-dismiss="alert") x
       p Check the input values
   body      
-   form(action='/addBug', method='post')
+   form.container.span4(action='/addBug', method='post')
     h2.form-signin-heading Bounty creation form
-    input.input-block-level(type='text', name='bugName', value = bug.bugName, placeholder='Title')
-    input.input-block-level(type='text', name='link', value = bug.link, placeholder='Link')
+    input.input-big(type='text', name='bugName', value = bug.bugName, placeholder='Title')
+    input.input-big(type='text', name='link', value = bug.link, placeholder='Link')
     textarea(rows='3', type='text', name='description', placeholder='Description')= bug.description
     br  
     button.btn.btn-large.btn-primary(type='submit') Submit
