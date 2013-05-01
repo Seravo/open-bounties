@@ -22,74 +22,73 @@ block content
       h4 Open Bounty!
       p This bounty is opened and you might claim it ;)    
 
-   .page-header
-    h2.form-signin-heading Bonty page     
-        small 
-         =req.bug.bugName
-        case req.bug.bountyStatus 
-         when 'OPEN'  
-          span.label.label-info(style="margin-left:5px;")
-           = req.bug.bountyStatus 
-         when 'IN PROGRESS' 
-          span.label.label-important(style="margin-left:5px;")
-           = req.bug.bountyStatus  
-        span.badge.badge-warning(style="margin-left:5px;") 
-          =req.bug.totalSum 
-          | €
-        - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
-          a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
-           button.btn.btn-mini.btn-primary Claim bounty!
-          a(href="#paymentWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
-           button.btn.btn-mini.btn-success Add money     
-    hr
-    p
-     b Posted by:  
-       a(href='/user/' + req.bug.author.id)
-        =req.bug.author.username
+  .page-header
+   h2.form-signin-heading Bonty page     
+       small 
+        =req.bug.bugName
+       case req.bug.bountyStatus 
+        when 'OPEN'  
+         span.label.label-info(style="margin-left:5px;")
+          = req.bug.bountyStatus 
+        when 'IN PROGRESS' 
+         span.label.label-important(style="margin-left:5px;")
+          = req.bug.bountyStatus  
+       span.badge.badge-warning(style="margin-left:5px;") 
+         =req.bug.totalSum 
+         | €
+       - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
+         a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
+          button.btn.btn-mini.btn-primary Claim bounty!
+         a(href="#paymentWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
+          button.btn.btn-mini.btn-success Add money     
+   hr
+   p
+    b Posted by:  
+      a(href='/user/' + req.bug.author.id)
+       =req.bug.author.username
+   p 
+    b Full description: 
+    =req.bug.description   
+   p  
+    b Link:  
+     a(href= req.bug.link)
+      =req.bug.link
+   if (req.bug.bountyStatus === 'IN PROGRESS')  
     p 
-     b Full description: 
-     =req.bug.description   
-    p  
-     b Link:  
-      a(href= req.bug.link)
-       =req.bug.link
-    if (req.bug.bountyStatus === 'IN PROGRESS')  
-     p 
-      b Claimed by 
-      a(href='/user/' + req.bug.claimer.id)
-        =req.bug.claimer.username   
-     //- p 
-     //-  b Deadline: 
-     //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
-     p 
-      b Time left: 
-      = (req.diff - req.diff % 60) / 60
-        | &nbsp;hours     
-      = req.diff % 60
-        | &nbsp;minutes       
-    hr 
-    p Comments: 
-     b= req.bug.comments.length    
-    each comment in req.bug.comments
-     //- img.image(alt="Picture", width="50", height="50" ,src= comment.user.imagePath)
-     div.commentbox
-      p= comment.body
-     div.commentfooter.shadow
-      p
-      b When: 
-      =comment.createdAt.toDateString()
-      b  Posted by 
-        a(href='/user/' + comment.user)
-         =comment.username       
+     b Claimed by 
+     a(href='/user/' + req.bug.claimer.id)
+       =req.bug.claimer.username   
+    //- p 
+    //-  b Deadline: 
+    //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
+    p 
+     b Time left: 
+     = (req.diff - req.diff % 60) / 60
+       | &nbsp;hours     
+     = req.diff % 60
+       | &nbsp;minutes       
+   hr 
+   p Comments: 
+    b= req.bug.comments.length    
+   each comment in req.bug.comments
+    //- img.image(alt="Picture", width="50", height="50" ,src= comment.user.imagePath)
+    div.commentbox
+     p= comment.body
+    div.commentfooter.shadow
+     p
+     b When: 
+     =comment.createdAt.toDateString()
+     b  Posted by 
+       a(href='/user/' + comment.user)
+        =comment.username       
   form(method="post", action="/bugpage/#{req.bug._id}/comments")
    textarea(type='text', rows="3", name='body', placeholder='Add your comment')
    br
    button.btn.btn-success(type='submit') Post
 
-  form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
-   #shadow 
 
-     //Payment form Initial code.
+
+  form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
    #paymentWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-header
      button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
@@ -108,8 +107,10 @@ block content
                 input#tos-agreed(type='checkbox',name='tos-agreed', required='required') 
                 I Agree to the              
                 a(href='#') Terms of Service                      
-    .modal-footer            
-     button.btn.btn-primary.btn-small Donate   
+     .modal-footer            
+      button.btn.btn-primary.btn-small Donate   
+ 
+
 
    //Claim bounty window
   #claimBountyWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')

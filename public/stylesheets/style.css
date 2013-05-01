@@ -6,10 +6,7 @@
       font-family: Verdana, Tahoma, arial, geneva, Helvetica, sans-serif;
       font-size: 11px;
       /*height: 1300px;*/
-      min-height: 100%;
-  height: auto !important /*min-height hack*/
-  height: 100%;           /*min-height hack*/
-  margin-bottom: -4em;
+
 
       }
       /* Custom container */
