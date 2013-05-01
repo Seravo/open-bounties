@@ -1,20 +1,25 @@
-.leftSide 
- ul.nav
-  li
-   b Main Links
-  li
-   a(href='#') Home
-  li
-   a(href='#') Bounties
-.centreSide
- ul.nav
-  li 
-   b About us
-  li
-   a(href='#') Home
-  li
-   a(href='#') Bounties 
-
-.rightSide
- b Social 
+div(style=" background-image:url('/pictures/grey_wash_wall.png'); min-height:130px;")
+  div(style="margin-left:40%;display:inline-block;float:left")
+    ul(style="list-style:none;")
+     li
+      h6.muted(style="color:#FF6A6A") Links 
+     li
+      a(href='/',style="color:white;") Home 
+     li
+      a(href='/users',style="color:white;") Users
+     li
+      a(href='/bugs',style="color:white;") Bounties
+     li
+      a(href='/addBug', style="color:white;") Post Bounty
+  div(style="display:inline-block;")
+    ul(style="list-style:none;")
+     li
+      h6.muted(style="color:#FF6A6A") About 
+     li
+      a(href='#',style="color:white;") Contact us
+     li
+      a(href='#',style="color:white;") FAQ 
+     //- h3.muted(align="center", style="color: #FF6A6A") OpenBounty.Org 
+div(style="clear:both")
+ p(align="center") (c) Wanderers 
  

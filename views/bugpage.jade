@@ -58,12 +58,14 @@ block content
          a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
           button.btn.btn-mini.btn-primary Claim bounty!
          a(href="#paymentWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
-          button.btn.btn-mini.btn-success Add money     
+          button.btn.btn-mini.btn-success Support this bounty     
    hr
    p
-    b Posted by:  
-      a(href='/user/' + req.bug.author.id)
-       =req.bug.author.username
+    b Posted by  
+      a(href='/user/' + req.bug.author.id) 
+       =req.bug.author.username 
+    |  at 
+    b=req.bug.ts.toDateString()    
    p 
     b Full description: 
     =req.bug.description   
@@ -86,7 +88,7 @@ block content
      = req.diff % 60
        | &nbsp;minutes       
    hr 
-   //- .fb-comments(data-href=req.url, data-width='470', data-num-posts='10')
+   .fb-comments(data-href=req.url, data-width='470', data-num-posts='10')
    p Comments: 
     b= req.bug.comments.length    
    each comment in req.bug.comments

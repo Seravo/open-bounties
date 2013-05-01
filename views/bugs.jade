@@ -2,6 +2,9 @@ extends layout
 block content
   body   
    h2.form-signin-heading All Bounties
+   form.form-search(style="float:right;")
+    input.input-medium.search-query(type='text')
+    button.btn(type='submit') Search
    //-table#myTable.tablesorter.table.table-bordered
    table.table.table-bordered.sortable
     thead

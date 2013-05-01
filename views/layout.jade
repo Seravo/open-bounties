@@ -16,12 +16,14 @@ html
    .menu.shadoweffect
     ul.nav.nav-pills
      li
-      a(href='/') Home
+      a(href='/') Home 
      li
       a(href='/users') Users
      li
       a(href='/bugs') Bounties
      if (req.isAuthenticated())
+      li
+       a(href='/addBug', style="color:red;") Post Bounty
       li
         a(href='/user/' + req.user.id) Profile
       li
@@ -35,8 +37,9 @@ html
      p.text-right.text(style="padding:5px 5px 0px 0px;") OpenBounty.org 
    hr  
    .content   
-    block content
+    block content 
    .footer
+    //- hr
     include footer
 
  form(action='/login', method='post')

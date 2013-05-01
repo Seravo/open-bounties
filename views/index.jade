@@ -7,14 +7,14 @@ block content
      p.lead
       | Enjoy software that you use.
      a.btn.btn-large.btn-success(href='/signup') Join us
-    hr
+    //- hr
    else
     .jumbotron.shadoweffect
      h1 Hi!
      p.lead
       | Claim yout first bug!
      a.btn.btn-large.btn-success(href='/signup') Join us
-    hr  
+    //- hr  
    .leftSide
     h4(align="center") Most recent bounties
     each bug in req.bugs
@@ -26,7 +26,7 @@ block content
         | &nbsp;
         case bug.bountyStatus 
          when 'OPEN'  
-          span.label.label-info(style="margin-right:5px")
+          span.label.label-success(style="margin-right:5px")
            = bug.bountyStatus 
          when 'IN PROGRESS' 
           span.label.label-important(style="margin-right:5px")
@@ -58,7 +58,7 @@ block content
         | &nbsp;
         case bug.bountyStatus 
          when 'OPEN'  
-          span.label.label-info(style="margin-right:5px")
+          span.label.label-success(style="margin-right:5px")
            = bug.bountyStatus 
          when 'IN PROGRESS' 
           span.label.label-important(style="margin-right:5px")
