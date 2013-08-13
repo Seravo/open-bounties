@@ -1,0 +1,26 @@
+extends layout
+block content
+  body   
+   h2.form-signin-heading Profile  
+  if (typeof(req.user) !== 'undefined' && typeof(req.myUser) !== 'undefined' && req.user.id === req.myUser.id)
+   .row
+    .span6 
+     p Your name is  
+      =req.myUser.name
+     p Email is 
+      =req.myUser.email
+    .span4
+     img.img-polaroid(alt="Picture", width="140", height="140" ,src= req.myUser.imagePath)
+     form(action='/uploadImage', method='POST', enctype="multipart/form-data")
+      input(type="file", name="thumbnail")
+      input(type='submit')
+  else
+   .row
+    .span6 
+     p User 
+      b 
+       =req.myUser.name
+     p Email is 
+      =req.myUser.email  
+    .span4
+     img.img-polaroid(alt="Picture", width="140", height="140" ,src= req.myUser.imagePath)   

@@ -1,0 +1,32 @@
+{
+  "name": "Open bounties",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "~3.1.0",
+    "jade": "~0.29.0",
+    "moment": "~2.0.0",
+    "mongoose": "~3.6.7",
+    "passport": "~0.1.16",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~0.1.5",
+    "passport-google": "~0.3.0",
+    "passport-twitter": "~0.1.4",
+    "passport-hash": "~0.2.0",
+    "request": "~2.16.6",
+    "cheerio": "~0.10.8",
+    "nodemailer": "~0.4.1"
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "a5853a51a7ceca397feeaf62091367d2899ef310",
+  "description": "a crowd funding platform for open source development",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edanchenkov/freezing-ninja.git"
+  },
+  "author": "Svetlana Borisnekova, Egor Danchenkov, Olga Shakurovas",
+  "license": "BSD"
+}

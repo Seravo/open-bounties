@@ -1,0 +1,27 @@
+extends layout
+block content
+  if (typeof(errors) !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert") x
+      each e in errors
+       if(e!=='')
+         p=e
+  body
+  .leftSide
+   form(action='/signup', method='post')
+    h2.form-signin-heading Register form:
+    input.input-block-level(type='text', name='name', value = user.name, placeholder='Name')
+    input.input-block-level(type='text', name='email', value = user.email, placeholder='E-mail')
+    input.input-block-level(type='text', name='username', value = user.username, placeholder='Username')
+    input.input-block-level(type='password', name='hashed_password', placeholder='Password')
+    label.checkbox
+      input(type='checkbox', value='remember-me')
+      | I agree with the rules
+    button.btn.btn-large.btn-primary(type='submit') Submit
+  .rightSide(style="margin-top:40px;")
+   a(href="/auth/facebook")
+    img(src="pictures/facebook.png")
+   a(href="/auth/google")
+    img(src="pictures/grey_google_stamp.png")
+   a(href="#")
+    img(src="pictures/grey_twitter_stamp.png")

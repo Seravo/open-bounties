@@ -1,0 +1,110 @@
+extends layout
+block content
+  body
+   if (!req.isAuthenticated())  
+    .jumbotron.shadoweffect
+     h1 Make your software even better!
+     p.lead
+      | Enjoy software that you use.
+     a.btn.btn-large.btn-success(href='/signup') Join us
+    //- hr
+   else
+    .jumbotron.shadoweffect
+     h1 Hi!
+     p.lead
+      | Claim yout first bug!
+     a.btn.btn-large.btn-success(href='/signup') Join us
+    //- hr  
+   .leftSide
+    h4(align="center") Most recent bounties
+    each bug in req.bugs
+     .bountyBox
+      .bountyInfo 
+       p 
+        b Title: 
+        =  bug.bugName 
+        | &nbsp;
+        case bug.bountyStatus 
+         when 'OPEN'  
+          span.label.label-success(style="margin-right:5px")
+           = bug.bountyStatus 
+         when 'IN PROGRESS' 
+          span.label.label-important(style="margin-right:5px")
+           = bug.bountyStatus  
+        span.badge.badge-warning  
+         =bug.totalSum 
+         | €  
+       p 
+         b Tags: 
+         | C++ , java bla bla   
+       a.btn.btn-info.btn-mini(style="", href="/bug/" + bug._id) Read more    
+      .authorInfo   
+       img.img-rounded(style='width:70px; height:70px;float:right', src=bug.author.imagePath)
+       p.ell(align="right") Author: 
+        a(href="/user/" + bug.author._id) 
+         =bug.author.username
+   .centreSide
+    h4(align="center") Most expensive and open bounties
+    each bug in req.expbugs
+     .bountyBox
+      .bountyInfo 
+       //- p
+       //-  b Posted by:   
+       //-  a(href="/user/" + bug.author._id) 
+       //-   =bug.author.username
+       p 
+        b Title: 
+        =  bug.bugName 
+        | &nbsp;
+        case bug.bountyStatus 
+         when 'OPEN'  
+          span.label.label-success(style="margin-right:5px")
+           = bug.bountyStatus 
+         when 'IN PROGRESS' 
+          span.label.label-important(style="margin-right:5px")
+           = bug.bountyStatus  
+        span.badge.badge-warning  
+         =bug.totalSum 
+         | €  
+       p 
+         b Tags: 
+         | C++ , java bla bla  
+       a.btn.btn-info.btn-mini(style="", href="/bug/" + bug._id) Read more  
+      .authorInfo
+       img.img-rounded(style='width:70px; height:70px; float:right', src=bug.author.imagePath)
+       p.ell(align="right") Author: 
+        a(href="/user/" + bug.author._id) 
+         =bug.author.username
+   .rightSide
+     h4 Info
+     p There are 
+      b=req.count
+      |  bounties in the system.
+     h4 Social
+     a.twitter-share-button(href='https://twitter.com/share', data-text='OpenBounty.org - make your software even better!', data-via='EDanchenkov') Tweet
+     iframe(src='https://www.facebook.com/plugins/like.php?href=http://haaga-helia.seravo.fi:3001/', scrolling='no', frameborder='0', style='border: none; width: 350px; height: 80px;')
+     
+  
+
+  script 
+    $('.bountyBox').hover(function() {
+       $(this).css( "background-color", "rgba(0, 250, 154, 0.2)" );
+        //alert(this.value);
+      },
+      function () {
+    $(this).css( "background-color", "rgba(132, 112, 255, 0.2)" );
+    })
+
+  script
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+
+
+
+
+
+
+
+
+
+

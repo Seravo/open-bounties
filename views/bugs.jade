@@ -1,0 +1,69 @@
+extends layout
+block content
+  body   
+   h2.form-signin-heading All Bounties
+   form.form-search(style="float:right;")
+    input.input-medium.search-query(type='text')
+    button.btn(type='submit') Search
+   //-table#myTable.tablesorter.table.table-bordered
+   table.table.table-bordered.sortable
+    thead
+     tr
+      th(style="width: 16%")
+       a.ell(href="#") Bounty  name
+      th(style="width: 16%")
+        a.ell(href="#") Description
+      th(style="width: 16%")
+        a.ell(href="#") Author
+      th(style="width: 8%")
+        a.ell(href="#") Status
+      th(style="width: 16%")
+        a.ell(href="#") Link
+      th(style= "display:none") id
+      th(style="width: 16%")
+        a.ell(href="#") Created at
+    tbody
+    each bug in req.bugs 
+     tr
+        td
+         a.ell(href="/bug/" + bug._id)= bug.bugName
+        td
+         p.ell
+          = bug.description
+        td
+          a.ell(href="/user/"+bug.author._id)=bug.author.username
+        td
+          p.ell
+            = bug.bountyStatus
+        td
+          a.ell(href=bug.link)=bug.link
+        td#rowId(style= "display:none")= bug.id
+        td
+          p.ell
+            =bug.ts.toDateString()
+   a.button.btn.btn-success(type='button', style='margin-bottom:5px;',href='/addBug' ) Add new
+   form(action='/deleteBug', method='post')
+    input.idInput(type='hidden', name='myId')
+    button.btn.btn-danger#deleteButton(type='submit', disabled) Delete
+   .pagination.pagination-right
+    ul
+      - if (page > 0) {
+      li
+        a(href="?page=0") First
+      li
+        a(href="?page=" + (page - 1)) <<
+      - }
+      - if (page<lastPage) {     
+      li
+        a(href="?page=" + (page + 1)) >>
+      li
+        a(href="?page=" + lastPage) Last  
+      - }    
+
+
+   script(src='../javascripts/checkbox.js')   
+   //-some scripts
+
+
+
+

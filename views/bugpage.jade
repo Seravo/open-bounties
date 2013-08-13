@@ -1,0 +1,164 @@
+extends layout
+block content
+  body
+  //- #fb-root
+  //- script
+  //-     window.fbAsyncInit = function() {
+  //-     // init the FB JS SDK
+  //-     FB.init({
+  //-     appId      : '449837621775038',                        // App ID from the app dashboard
+  //-     channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+  //-     status     : true,                                 // Check Facebook Login status
+  //-     xfbml      : true                                  // Look for social plugins on the page
+  //-     });
+  //-     // Additional initialization code such as adding Event Listeners goes here
+  //-     };
+  //-     // Load the SDK asynchronously
+  //-     (function(d, s, id){
+  //-     var js, fjs = d.getElementsByTagName(s)[0];
+  //-     if (d.getElementById(id)) {return;}
+  //-     js = d.createElement(s); js.id = id;
+  //-     js.src = "//connect.facebook.net/en_US/all.js";
+  //-     fjs.parentNode.insertBefore(js, fjs);
+  //-     }(document, 'script', 'facebook-jssdk'));   
+  if (!req.isAuthenticated())
+   .alert.alert-error
+    //- button.close(type='button', data-dismiss='alert') ×
+    h4 Notice!
+    p In order to claim this bounty and try to fix it, you have to 
+     a(href="#logIn", data-toggle='modal') login 
+     |  . But you still can add more money to support!
+  else
+   if (req.bug.bountyStatus === 'IN PROGRESS')  
+    .alert.alert-error
+     //- button.close(type='button', data-dismiss='alert') ×
+     h4 This bounty in progress. 
+     p 
+      = req.bug.claimer.username   
+      | &nbsp;is working on a solution!
+   else 
+     .alert.alert-info
+      //- button.close(type='button', data-dismiss='alert') ×
+      h4 Open Bounty!
+      p This bounty is opened and you might claim it ;)    
+
+  .page-header
+   h2.form-signin-heading.text-info=req.bug.bugName     
+       case req.bug.bountyStatus 
+        when 'OPEN'  
+         span.label.label-success(style="margin-left:5px;")
+          = req.bug.bountyStatus 
+        when 'IN PROGRESS' 
+         span.label.label-important(style="margin-left:5px;")
+          = req.bug.bountyStatus  
+       span.badge.badge-warning(style="margin-left:5px;") 
+         =req.bug.totalSum 
+         | €
+       - if (req.bug.bountyStatus === 'OPEN' && req.isAuthenticated()===true) 
+         a(href="#claimBountyWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
+          button.btn.btn-mini.btn-primary Claim bounty!
+         a(href="#paymentWin", role='button', data-toggle='modal', style='float:right; padding: 5px')
+          button.btn.btn-mini.btn-success Support this bounty     
+   hr
+   p
+    b Posted by  
+      a(href='/user/' + req.bug.author.id) 
+       =req.bug.author.username 
+    |  at 
+    b=req.bug.ts.toDateString()    
+   p 
+    b Full description: 
+    =req.bug.description   
+   p  
+    b Link:  
+     a(href= req.bug.link)
+      =req.bug.link
+   if (req.bug.bountyStatus === 'IN PROGRESS')  
+    p 
+     b Claimed by 
+     a(href='/user/' + req.bug.claimer.id)
+       =req.bug.claimer.username   
+    //- p 
+    //-  b Deadline: 
+    //-  =req.bug.deadline.toDateString() + ', ' + req.bug.deadline.getHours() + ':' + req.bug.deadline.getMinutes()
+    p 
+     b Time left: 
+     = (req.diff - req.diff % 60) / 60
+       | &nbsp;hours     
+     = req.diff % 60
+       | &nbsp;minutes       
+   hr 
+   .fb-comments(data-href=req.url, data-width='470', data-num-posts='10')
+   p Comments: 
+    b= req.bug.comments.length    
+   each comment in req.bug.comments
+    //- img.image(alt="Picture", width="50", height="50" ,src= comment.user.imagePath)
+    div.commentbox
+     p= comment.body
+    div.commentfooter.shadow
+     p
+     b When: 
+     =comment.createdAt.toDateString()
+     b  Posted by 
+       a(href='/user/' + comment.user)
+        =comment.username       
+  form(method="post", action="/bugpage/#{req.bug._id}/comments")
+   textarea(type='text', rows="3", name='body', placeholder='Add your comment')
+   br
+   button.btn.btn-success(type='submit') Post
+
+
+
+  form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
+   #paymentWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-header
+     button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+     h3#myModalLabel Donation Form
+      .modal-body
+       form#payment-form(method="post",  action="/bugpage/#{req.bug._id}/additions")
+         .modal-body          
+           .control-group
+            label.control-label.validate(for='sum') Donation Amount
+              .controls
+               .input-prepend
+                .span.add-on  €                
+                input.input-mini(name='sum', type='number', value='5', required='required')
+              .controls
+               label.checkbox
+                input#tos-agreed(type='checkbox',name='tos-agreed', required='required') 
+                I Agree to the              
+                a(href='#') Terms of Service                      
+     .modal-footer            
+      button.btn.btn-primary.btn-small Donate   
+ 
+
+
+   //Claim bounty window
+  #claimBountyWin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+   .modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h3#myModalLabel Claim bounty
+   .modal-body
+    p Some kind of agreement here..
+    .alert.alert-error
+     | In that moment only 2 days is max
+    p Please, choose how much time you are going to spent: 
+     select.hours(style='width:60px;')
+      option 12 
+      option 24 
+      option 36 
+      option 48 
+     |&nbsp;hours
+   .modal-footer
+    form(method="post",  action="/bugpage/#{req.bug._id}/claim")
+     input.inputHours(name='hours', type='hidden', value = '12') 
+     button.btn(data-dismiss='modal', aria-hidden='true') Close
+     button.btn.btn-primary Do it!
+
+     script 
+      $('.hours').click(function() {
+          var hours = this.value;
+          $('.inputHours').attr('value', hours);
+          //alert(this.value);
+        })
+
